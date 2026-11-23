@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Študuj na UNIZA a FPEDAS: prezentácia pre SOŠ obchodu a služieb</title>
+<meta name="description" content="Interaktívna prezentácia o štúdiu na Žilinskej univerzite v Žiline a Fakulte prevádzky a ekonomiky dopravy a spojov.">
+<meta name="theme-color" content="#002D72">
+<link rel="icon" href="assets/img/uniza-symbol.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- jedna sada ikon (čiarová, hrúbka 1.8) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+  <symbol id="i-notes" viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="2.5"/><path d="M8 8.5h8M8 12.5h8M8 16.5h5"/></symbol>
+  <symbol id="i-pres" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 21h8M12 16v5"/></symbol>
+  <symbol id="i-src" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.4"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.4"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.4"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.4"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2-2.4 3.6M12 17.2v.1"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-open" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-redo" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.6-5.9L4 8.5"/><path d="M4 4v4.5h4.5"/></symbol>
+</svg>
+
+<div class="viewport" id="viewport">
+<div class="stage" id="stage" aria-live="off">
+
+<!-- 01 ÚVOD -->
+<section class="slide s-intro dark" id="s-intro" data-title="Úvod" data-theme="dark" aria-label="Úvod">
+  <div class="bgimg" role="img" aria-label="Letecký záber kampusu Žilinskej univerzity"></div>
+  <div class="veil"></div>
+  <img class="logo" src="assets/img/uniza-logo-full-white.svg" alt="Žilinská univerzita v Žiline" data-in style="--i:0">
+  <div class="who" data-in style="--i:1">Pre žiakov Strednej odbornej školy<br>obchodu a služieb, Martin</div>
+  <div class="main">
+    <h1 data-in style="--i:2">Tu sa môže začať tvoja budúcnosť.</h1>
+    <p class="lead" data-in style="--i:3">Žilinská univerzita v Žiline a Fakulta prevádzky a ekonomiky dopravy a spojov</p>
+  </div>
+  <div class="pres" data-in style="--i:4"><span>Prezentujú</span><div id="introPres"></div></div>
+</section>
+
+<!-- 02 UNIZA -->
+<section class="slide s-uniza" id="s-uniza" data-title="UNIZA v skratke" aria-label="UNIZA v skratke">
+  <div class="l">
+    <div>
+      <h2 data-in style="--i:0">Univerzita, ktorá začínala na koľajniciach</h2>
+    </div>
+    <div class="facts">
+      <div class="fact" data-in style="--i:1"><b>1953</b><span>vznik ako Vysoká škola železničná, vyčlenená z ČVUT v Prahe</span></div>
+      <div class="fact" data-in style="--i:2"><b>6</b><span>fakúlt: od dopravy cez stroje a stavby po informatiku</span></div>
+      <div class="fact" data-in style="--i:3"><b class="num">7 700+</b><span>študentov na univerzite</span></div>
+    </div>
+  </div>
+  <div class="fac-list" id="facList"></div>
+  <p class="src-note" style="left:848px;right:112px;bottom:80px">Zdroje: uniza.sk (Profil univerzity, Fakulty), dizajn manuál UNIZA (farby fakúlt). Ústav mediamatiky a kultúrneho dedičstva patrí k univerzite ako samostatné pracovisko.</p>
+</section>
+
+<!-- 03 KAMPUS -->
+<section class="slide s-campus" id="s-campus" data-title="Kampus" aria-label="Interaktívna mapa kampusu">
+  <div class="mapbox" id="mapbox">
+    <svg id="mapsvg" role="group" aria-label="Schematická mapa kampusu Veľký Diel, sever je hore"></svg>
+    <div id="maplabs"></div>
+    <div class="north" aria-hidden="true"><span>S</span></div>
+    <div class="zoom" role="group" aria-label="Priblíženie mapy">
+      <button class="zbtn" id="zFull" aria-pressed="false">Celý areál</button>
+      <button class="zbtn" id="zCore" aria-pressed="true">Fakulty</button>
+    </div>
+  </div>
+  <div class="cpanel">
+    <h2 data-in style="--i:0">Šesť fakúlt, jeden areál</h2>
+    <div class="tabs" role="tablist" data-in style="--i:1">
+      <button class="tab" role="tab" id="tabF" aria-selected="true">Fakulty</button>
+      <button class="tab" role="tab" id="tabL" aria-selected="false">Študentský život</button>
+    </div>
+    <div class="plist" id="plistMap" data-in style="--i:2"></div>
+    <div class="detail" id="mapDetail" aria-live="polite" data-in style="--i:3"></div>
+  </div>
+  <p class="src-note" style="bottom:86px;left:112px;right:112px;font-size:18px">Schematická mapa podľa oficiálneho plánu areálu UNIZA a mapy 11/2025, otočená severom hore. Nie je v mierke, výška budov je ilustračná. Farby fakúlt podľa dizajn manuálu UNIZA.</p>
+</section>
+
+<!-- 04 PREČO FPEDAS -->
+<section class="slide s-why" id="s-why" data-title="Prečo FPEDAS" aria-label="Prečo FPEDAS">
+  <h1 data-in style="--i:0">Nie je to len doprava.</h1>
+  <p class="lead" data-in style="--i:1">Čo sa stane po kliknutí na Objednať? Klikni na stanicu.</p>
+  <div class="journey" id="journey" data-in style="--i:2"><div class="jline"><i id="jfill"></i></div></div>
+  <div class="jdetail" id="jdetail" aria-live="polite" data-in style="--i:3"></div>
+</section>
+
+<!-- 05 KATEDRY -->
+<section class="slide s-dept dark" id="s-dept" data-title="Katedry" data-theme="dark" aria-label="Katedry FPEDAS">
+  <div class="l">
+    <div>
+      <img src="assets/img/fpedas-logo-white.svg" alt="FPEDAS" style="height:124px;margin-bottom:40px;--i:0" data-in>
+      <h2 data-in style="--i:1">Sedem katedier, dva svety</h2>
+    </div>
+    <div class="stats">
+      <div class="stat" data-in style="--i:2"><b>1 972</b><span>študentov na fakulte</span></div>
+      <div class="stat" data-in style="--i:3"><b>21 306</b><span>absolventov</span></div>
+      <div class="stat" data-in style="--i:4"><b>22</b><span>študijných programov vo všetkých stupňoch</span></div>
+    </div>
+  </div>
+  <div class="dgroups" id="dgroups"></div>
+  <p class="src-note" style="left:792px;bottom:84px">Zdroj: fpedas.uniza.sk (stav 23. 11. 2026), stránka Katedry. Kliknutím rozbalíš popis.</p>
+</section>
+
+<!-- 06 PROGRAMY -->
+<section class="slide s-prog" id="s-prog" data-title="Čo môžeš študovať" aria-label="Bakalárske študijné programy">
+  <div>
+    <h2 data-in style="--i:0">Deväť programov, štyri svety</h2>
+    <p class="lead" style="max-width:none;font-size:30px;--i:1" data-in>Bakalárske štúdium 2027/2028, denne, 3 roky. Klikni na program.</p>
+    <div class="cats" id="cats" data-in style="--i:2"></div>
+  </div>
+  <div class="pdet" id="pdet" aria-live="polite" data-in style="--i:3"></div>
+  <p class="src-note" style="bottom:84px;left:112px;right:832px;font-size:19px">Zdroje: FPEDAS, leták bakalárskeho štúdia 2027/2028 (počty miest), profily absolventov. Program Dopravné služby v osobnej doprave je len v zozname 2026/2027, v ponuke 2027/2028 nie je.</p>
+</section>
+
+<!-- 07 NÁJDI SVOJ SMER -->
+<section class="slide s-find" id="s-find" data-title="Nájdi svoj smer" aria-label="Nájdi svoj smer">
+  <div class="l">
+    <h2 data-in style="--i:0">Čo ťa baví?</h2>
+    <p class="lead" style="max-width:26ch;font-size:32px;--i:1" data-in>Vyber jednu alebo viac vecí. Programy, ktoré k nim sedia, sa zvýraznia.</p>
+    <div class="ints" id="ints" data-in style="--i:2"></div>
+    <div class="hint" data-in style="--i:3"><span>Orientačná pomôcka, nie test ani poradenstvo.</span><button class="btn" id="intReset"><svg class="ic"><use href="#i-redo"/></svg>Zrušiť výber</button></div>
+  </div>
+  <div class="res" id="res" aria-live="polite" data-in style="--i:2"></div>
+</section>
+
+<!-- 08 STUPNE -->
+<section class="slide s-lev" id="s-lev" data-title="Tri stupne štúdia" aria-label="Tri stupne štúdia">
+  <h2 data-in style="--i:0">Tri stupne na jednej fakulte</h2>
+  <div class="lev" id="lev" data-in style="--i:1"></div>
+  <div class="lnote" id="lnote" aria-live="polite">Klikni na bakalársky program a uvidíš, čo ho nasleduje.</div>
+  <p class="src-note" style="bottom:84px;font-size:19px;left:auto;right:112px;text-align:right;max-width:900px">Zdroje: FPEDAS, letáky 2027/2028 (Bc., Ing., PhD.), Sprievodca prváka 2026/2027. Počty miest sú plánované pre denné štúdium.</p>
+</section>
+
+<!-- 09 PRAX -->
+<section class="slide s-prax" id="s-prax" data-title="Štúdium v praxi" aria-label="Štúdium v praxi">
+  <div class="band" role="img" aria-label="Letecký záber budovy FPEDAS"></div>
+  <img class="logo" src="assets/img/fpedas-logo-white.svg" alt="FPEDAS">
+  <h2 data-in style="--i:0">Štúdium nie je len prednášky</h2>
+  <div class="pcards" id="pcards"></div>
+  <p class="src-note" style="bottom:84px">Zdroje: fpedas.uniza.sk (Bakalárske štúdium, aktuality 2026), Sprievodca prváka 2026/2027. Foto: FPEDAS.</p>
+</section>
+
+<!-- 10 PO ŠKOLE -->
+<section class="slide s-jobs" id="s-jobs" data-title="Po škole" aria-label="Kde sa uplatníš">
+  <h2 data-in style="--i:0">Kde sa môžeš uplatniť</h2>
+  <div class="jcols" id="jcols" data-in style="--i:1"></div>
+  <div class="jbar" id="jbar" aria-live="polite">Klikni na pozíciu a uvidíš, z ktorého programu vedie.</div>
+</section>
+
+<!-- 11 AKO SA DOSTAŤ -->
+<section class="slide s-adm" id="s-adm" data-title="Ako sa dostať" aria-label="Ako sa dostať na FPEDAS">
+  <div>
+    <h2 data-in style="--i:0">Aj bez prijímačiek?</h2>
+    <div class="ctl" data-in style="--i:1">
+      <div class="seg2" role="group" aria-label="Typ strednej školy">
+        <button id="tSos" aria-pressed="true">SOŠ, akadémia</button>
+        <button id="tGym" aria-pressed="false">Gymnázium</button>
+      </div>
+      <div class="step" role="group" aria-label="Priemer za predposledný ročník">
+        <button class="rb" id="avgM" aria-label="Znížiť priemer"><svg class="ic"><use href="#i-minus"/></svg></button>
+        <div class="v" id="avgV" aria-live="polite">1,5</div>
+        <button class="rb" id="avgP" aria-label="Zvýšiť priemer"><svg class="ic"><use href="#i-plus"/></svg></button>
+      </div>
+    </div>
+    <p class="cap" style="margin-bottom:10px;--i:2" data-in>Priemer na koncoročnom vysvedčení za predposledný ročník (nie maturitný). Klávesy <kbd>↑</kbd> <kbd>↓</kbd> menia priemer, <kbd>T</kbd> typ školy. Stredné priemyselné školy majú pri niektorých programoch iné limity (pozri zásady prijatia).</p>
+    <div class="admlist" id="admlist" data-in style="--i:3"></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:18px;--i:2" data-in>
+    <div class="dates" id="dates"></div>
+    <div class="other"><b>Bez skúšky stačí splniť jednu podmienku:</b> priemer (vľavo), úspech v súťaži (Objav PEDAS, Ekonomická olympiáda, Mladý účtovník, súťaž pre obchodné akadémie) alebo SCIO percentil 50 a viac. Maturita zo slovenčiny alebo češtiny. <b>Inak:</b> test zo všeobecných vedomostí, matematiky a cudzieho jazyka.</div>
+  </div>
+  <p class="src-note" style="bottom:84px;left:112px;right:760px;font-size:19px">Zdroj: FPEDAS, informačný leták a zásady prijatia na bakalárske štúdium 2027/2028. Poplatok za prihlášku 40 € (občania EÚ), na každý program samostatná prihláška.</p>
+</section>
+
+<!-- 12 ŽIVOT -->
+<section class="slide s-life" id="s-life" data-title="Život na univerzite" aria-label="Život na univerzite">
+  <h2 data-in style="--i:0">Čo ťa čaká mimo prednášok</h2>
+  <div class="lifegrid" id="lifegrid"></div>
+  <p class="src-note" style="bottom:84px">Zdroje: leták bakalárskeho štúdia 2027/2028 (ceny), Sprievodca prváka 2026/2027, uniza.sk. Kliknutím rozbalíš kartu.</p>
+</section>
+
+<!-- 13 PRÍBEHY -->
+<section class="slide s-story" id="s-story" data-title="Naše príbehy" aria-label="Naše príbehy">
+  <h2 data-in style="--i:0">Dve cesty, jedna fakulta</h2>
+  <div class="story" id="story" data-in style="--i:1"></div>
+  <p class="src-note" style="bottom:84px">Klikni na text a prepíš ho, klikni na kruh a vlož fotku. Uloží sa len v tomto prehliadači. <kbd>E</kbd> zvýrazní polia.</p>
+</section>
+
+<!-- 14 KVÍZ -->
+<section class="slide s-quiz" id="s-quiz" data-title="Kvíz" aria-label="Kvíz">
+  <div class="l">
+    <div class="qprog" id="qprog"></div>
+    <div class="qq" id="qq" data-in style="--i:1"></div>
+    <div class="fb" id="qfb" aria-live="polite"></div>
+  </div>
+  <div class="opts" id="opts" data-in style="--i:2"></div>
+</section>
+
+<!-- 15 ZÁVER -->
+<section class="slide s-end dark" id="s-end" data-title="Záver" data-theme="dark" aria-label="Záver">
+  <div class="logos"><img src="assets/img/fpedas-logo-white.svg" alt="FPEDAS, Žilinská univerzita v Žiline"></div>
+  <div class="l">
+    <h1 data-in style="--i:0">Príď sa pozrieť.</h1>
+    <div class="endinfo" data-in style="--i:1">
+      <div><span class="k">Deň otvorených dverí</span><b>5. 2. 2027</b></div>
+      <div><span class="k">Prihláška do</span><b>31. 3. 2027</b></div>
+      <div><span class="k">Študijné oddelenie</span><b>fpedas-studref@uniza.sk</b></div>
+      <div><span class="k">Telefón</span><b>+421 41 513 30 53</b></div>
+      <div><span class="k">Adresa</span><b>Univerzitná 8215/1, Žilina</b></div>
+    </div>
+    <p class="endmap" data-in style="--i:2">Interaktívna mapa areálu: uvedená na oficiálnej mape UNIZA ako campus.uniza.sk</p>
+  </div>
+  <div class="qrs" data-in style="--i:2">
+    <a class="qr" href="https://www.fpedas.uniza.sk/sk/uchadzaci/moznosti-studia/bakalarske-studium" target="_blank" rel="noopener"><img src="assets/qr/studium.svg" alt="QR kód: bakalárske štúdium FPEDAS"><b>Ponuka štúdia</b><span>fpedas.uniza.sk, bakalárske štúdium</span></a>
+    <a class="qr" href="https://www.fpedas.uniza.sk/sk/uchadzaci/vseobecne-informacie/prijimacie-konania" target="_blank" rel="noopener"><img src="assets/qr/prijimacky.svg" alt="QR kód: prijímacie konanie FPEDAS"><b>Prijímacie konanie</b><span>fpedas.uniza.sk, termíny a podmienky</span></a>
+    <a class="qr" href="https://vzdelavanie.uniza.sk/prijimacky/index.php" target="_blank" rel="noopener"><img src="assets/qr/prihlaska.svg" alt="QR kód: elektronická prihláška"><b>Elektronická prihláška</b><span>vzdelavanie.uniza.sk/prijimacky</span></a>
+  </div>
+</section>
+
+<!-- pätka -->
+<div class="foot" id="foot">
+  <div class="brand"><img id="footLogo" src="assets/img/uniza-symbol.svg" alt=""><span id="footLabel">UNIZA · FPEDAS</span></div>
+  <div class="segs" id="segs" role="group" aria-label="Slajdy"></div>
+  <div class="ctrls">
+    <button class="ctrl" id="bPrev" aria-label="Predchádzajúci slajd (šípka vľavo)" title="Predchádzajúci (←)"><svg class="ic"><use href="#i-prev"/></svg></button>
+    <span class="count" id="count">1 / 15</span>
+    <button class="ctrl" id="bNext" aria-label="Ďalší slajd (šípka vpravo alebo medzerník)" title="Ďalší (→ alebo medzerník)"><svg class="ic"><use href="#i-next"/></svg></button>
+    <button class="ctrl" id="bGrid" aria-label="Prehľad slajdov (G)" title="Prehľad slajdov (G)"><svg class="ic"><use href="#i-grid"/></svg></button>
+    <button class="ctrl" id="bFull" aria-label="Celá obrazovka (F)" title="Celá obrazovka (F)"><svg class="ic"><use href="#i-full"/></svg></button>
+    <button class="ctrl" id="bNotes" aria-label="Poznámky (N)" title="Poznámky (N)"><svg class="ic"><use href="#i-notes"/></svg></button>
+    <button class="ctrl" id="bPres" aria-label="Okno prezentujúceho (P)" title="Okno prezentujúceho (P)"><svg class="ic"><use href="#i-pres"/></svg></button>
+    <button class="ctrl" id="bSrc" aria-label="Zdroje (S)" title="Zdroje (S)"><svg class="ic"><use href="#i-src"/></svg></button>
+    <button class="ctrl" id="bHelp" aria-label="Ovládanie (?)" title="Ovládanie (?)"><svg class="ic"><use href="#i-help"/></svg></button>
+  </div>
+</div>
+
+</div><!-- /stage -->
+</div><!-- /viewport -->
+
+<div class="rot">Otoč zariadenie na šírku. Prezentácia má pomer strán 16:9.</div>
+
+<script src="js/data.js"></script>
+<script src="js/campus-data.js"></script>
+<script src="js/map.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
