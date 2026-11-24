@@ -26,40 +26,37 @@ python3 -m http.server 8080   # potom http://localhost:8080
 | `G` | prehľad slajdov |
 | `N` | poznámky pre prezentujúceho priamo na plátne |
 | `P` | okno prezentujúceho (poznámky, ďalší slajd, časovač), synchronizované s hlavným oknom |
-| `S` | zdroje ku všetkým slajdom |
+| `S` | zdroje (len z klávesnice, nie sú na slajdoch) |
 | `?` | prehľad ovládania |
-| `1`–`6` / `1`–`4` | výber záujmov (slajd 7) / odpovedí v kvíze (slajd 14) |
+| `1`–`4` | odpovede v kvíze (slajd 13) |
 | `↑` `↓`, `T` | priemer a typ školy (slajd 11) |
-| `E` | zvýrazní editovateľné polia (slajd 13) |
 
 Všetko sa dá ovládať aj kliknutím: navigácia v pätke (segmenty, šípky, prehľad), každý interaktívny prvok je tlačidlo.
 Plátno má pevný pomer 16:9 (1920 × 1080) a škáluje sa na okno, takže vyzerá rovnako na notebooku aj projektore.
 
 ## Slajdy a rozdelenie medzi prezentujúcich
 
-Doktorand **A** = absolvent Katedry ekonomiky, doktorand **B** = Katedra spojov. Poznámky (kto, hlavná myšlienka, čo povedať, otázka pre publikum, čas) sú v `js/data.js` (`NOTES`) a zobrazujú sa klávesmi `N` a `P`. Celé trvanie je ≈ 40 minút, bez slajdov označených „možno vynechať“ ≈ 33 minút.
+Doktorand **A** = Ing. Dávid Horník (Katedra ekonomiky), doktorand **B** = Ing. Michal Buchta (Katedra spojov).
+**Podrobný scenár krok za krokom** (čo kliknúť, čo povedať, koho je rad, otázky z publika) je v súbore [`scenar.html`](scenar.html), dá sa vytlačiť (Ctrl+P). Stručné poznámky sú aj v okne prezentujúceho (`P`) a v `js/data.js` (`NOTES`). Celé trvanie ≈ 37 minút, bez slajdov „možno vynechať“ ≈ 29 minút.
 
 | # | Slajd | Kto | Interakcia |
 | --- | --- | --- | --- |
-| 1 | Úvod | obaja | |
+| 1 | Úvod | A + B | |
 | 2 | UNIZA v skratke, 6 fakúlt | A | |
 | 3 | Kampus: interaktívna mapa | B | klik na budovu / fakultu, záložky Fakulty a Študentský život, priblíženie |
-| 4 | Nie je to len doprava: cesta objednávky | A | klik na stanice, prepojenie na programy |
-| 5 | Sedem katedier | B | rozbaľovanie |
+| 4 | Nie je to len doprava: cesta objednávky | A | klik na stanice, odkazy na programy |
+| 5 | Sedem katedier | B | rozbaľovanie (možno vynechať) |
 | 6 | Čo môžeš študovať: 9 programov v 4 svetoch | A + B | klik na program |
-| 7 | Nájdi svoj smer | B | výber záujmov, orientačná pomôcka |
-| 8 | Tri stupne Bc. → Ing. → PhD. | A | klik na program ukáže nadväznosť |
-| 9 | Štúdium v praxi | B | rozbaľovanie kariet |
-| 10 | Kde sa môžeš uplatniť | A + B | klik na pozíciu |
-| 11 | Dostaneš sa aj bez prijímačiek? | A | priemer, typ školy, termíny |
-| 12 | Život na univerzite | B | rozbaľovanie kariet |
-| 13 | Naše príbehy | obaja | editovateľné polia a fotky |
-| 14 | Kvíz (3 otázky) | obaja | odpovede, skóre |
-| 15 | Záver: 3 QR kódy, kontakty | obaja | |
+| 7 | Tri stupne Bc. → Ing. → PhD. | A | klik na program ukáže nadväznosť |
+| 8 | Štúdium nie sú len prednášky | B | rozbaľovanie kariet (možno vynechať) |
+| 9 | Štipendium už počas štúdia | B | |
+| 10 | Kde sa môžeš uplatniť | A + B | klik na pozíciu (možno vynechať) |
+| 11 | Aj bez prijímačiek? | A | priemer, typ školy, termíny |
+| 12 | Čo ťa čaká mimo prednášok | B | rozbaľovanie kariet |
+| 13 | Kvíz (3 otázky) | A + B | odpovede, skóre |
+| 14 | Príď sa pozrieť: 3 QR kódy, kontakty | A + B | |
 
-### Čo treba doplniť pred prezentáciou
-
-Osobné skúsenosti prezentujúcich **nie sú vymyslené**, sú to prázdne polia. Na slajde 13 klikni na text a prepíš ho, klikni na kruh a vlož fotku. Uloží sa v prehliadači (`localStorage`). Mená možno nastaviť aj natrvalo v `js/data.js` (`PRESENTERS`).
+Mená prezentujúcich sa menia v `js/data.js` (`PRESENTERS`). Zdroje k slajdom nie sú na slajdoch; zobrazia sa klávesom `S` a sú v `js/data.js` (`SOURCES`).
 
 ## Overené fakty a zistené rozdiely (stav 23. 11. 2026)
 
@@ -90,6 +87,7 @@ Mapa **nie je v mierke**; výška budov je len ilustračná.
 
 ```
 index.html            všetky slajdy (statické HTML)
+scenar.html           scenár pre prezentujúcich (tlačiteľný)
 presenter.html        okno prezentujúceho
 css/styles.css        dizajnový systém a štýly slajdov
 js/data.js            obsah, poznámky, zdroje, kvíz (tu sa upravuje text)

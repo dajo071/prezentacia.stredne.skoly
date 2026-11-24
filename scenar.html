@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scenár prezentácie: krok za krokom</title>
+<style>
+@font-face{font-family:"Public Sans";src:url("assets/fonts/PublicSans-var.woff2") format("woff2");font-weight:100 900;font-display:swap}
+:root{--navy:#002D72;--ink:#1D2433;--mute:#566277;--paper:#F3F5F9;--line:#D5DBE7;--signal:#FF6A14;--a:#0032A0;--b:#009A44}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Public Sans","Segoe UI",system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.5;font-size:17px}
+main{max-width:980px;margin:0 auto;padding:36px 24px 80px}
+h1{font-size:40px;line-height:1.05;letter-spacing:-.02em;color:var(--navy);margin:0 0 8px}
+h2{font-size:26px;color:var(--navy);margin:44px 0 12px;letter-spacing:-.01em}
+h3{font-size:19px;margin:20px 0 6px;color:var(--navy)}
+p{margin:8px 0}
+.lead{font-size:19px;color:var(--mute)}
+.box{background:#fff;border:2px solid var(--line);border-radius:18px;padding:18px 22px;margin:14px 0}
+.slide{background:#fff;border:2px solid var(--line);border-radius:22px;padding:22px 26px 18px;margin:22px 0;break-inside:avoid}
+.slide>header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:6px}
+.n{font-size:34px;font-weight:800;color:var(--navy);min-width:48px}
+.t{font-size:24px;font-weight:800;color:var(--navy)}
+.chip{display:inline-block;padding:3px 14px;border-radius:999px;border:2px solid var(--line);font-size:14px;font-weight:700;color:var(--navy)}
+.chip.A{background:var(--a);border-color:var(--a);color:#fff}
+.chip.B{background:var(--b);border-color:var(--b);color:#fff}
+.chip.time{background:var(--signal);border-color:var(--signal)}
+.chip.opt{border-style:dashed}
+.lab{font-size:13px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:var(--mute);margin:14px 0 4px}
+.do li{margin:3px 0}
+.say{border-left:6px solid var(--navy);padding:4px 0 4px 16px;margin:6px 0}
+.say.A{border-color:var(--a)}.say.B{border-color:var(--b)}
+.say b{display:inline-block;min-width:22px;color:var(--navy)}
+.ph{background:#FFF1E8;border:2px dashed var(--signal);border-radius:8px;padding:0 6px;font-weight:600}
+.ask{background:#EEF3FB;border-radius:12px;padding:10px 14px;margin-top:10px}
+.warn{background:#FFF8E1;border-radius:12px;padding:10px 14px;margin-top:10px}
+ul,ol{margin:6px 0;padding-left:24px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+td,th{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:#EEF3FB}
+.nav a{display:inline-block;margin:2px 6px 2px 0;padding:3px 12px;border:2px solid var(--line);border-radius:999px;text-decoration:none;color:var(--navy);font-weight:700;font-size:14px;background:#fff}
+@media print{body{background:#fff;font-size:12.5pt}.nav{display:none}.slide{page-break-inside:avoid;border-width:1px}main{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>Scenár prezentácie</h1>
+<p class="lead">Krok za krokom: čo kliknúť, čo povedať a koho je rad. Vety v rámčeku sú navrhnuté tak, aby sa dali povedať skoro doslova, vlastnými slovami je to ešte lepšie.</p>
+
+<div class="box">
+<p><span class="chip A">A</span> <b>Ing. Dávid Horník</b>, Katedra ekonomiky &nbsp; <span class="chip B">B</span> <b>Ing. Michal Buchta</b>, Katedra spojov</p>
+<p>Dĺžka: asi <b>37 minút</b>. Kratšia verzia asi <b>29 minút</b>: vynechajte slajdy označené <span class="chip opt">možno vynechať</span> (5, 8, 10).</p>
+<p>Oranžové polia <span class="ph">[doplň …]</span> sú miesta na <b>vašu vlastnú skúsenosť</b>. Nič si nevymýšľajte, povedzte len to, čo naozaj zažili ste.</p>
+</div>
+
+<div class="nav">
+<a href="#pred">Pred začiatkom</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a><a href="#s5">5</a><a href="#s6">6</a><a href="#s7">7</a><a href="#s8">8</a><a href="#s9">9</a><a href="#s10">10</a><a href="#s11">11</a><a href="#s12">12</a><a href="#s13">13</a><a href="#s14">14</a><a href="#faq">Otázky z publika</a><a href="#pravidla">Čo nehovoriť</a>
+</div>
+
+<h2 id="pred">Pred začiatkom (10 minút vopred)</h2>
+<div class="box">
+<ol>
+<li><b>Notebook pripojte na projektor</b> a nastavte „rozšíriť obrazovku“ (nie zrkadliť).</li>
+<li>Otvorte prezentáciu: <b>https://dajo071.github.io/prezentacia.stredne.skoly/</b>. Pre istotu majte stiahnutý priečinok a otvorte <code>index.html</code> zo súboru (funguje aj bez internetu).</li>
+<li>Presuňte okno prezentácie na <b>projektor</b> a stlačte <b>F</b> (celá obrazovka).</li>
+<li>Na notebooku stlačte <b>P</b>: otvorí sa <b>okno prezentujúceho</b> s poznámkami, ďalším slajdom a časovačom. Toto okno vidíte len vy. Ak sa neotvorí, povoľte vyskakovacie okná.</li>
+<li>Kliknite <b>Štart</b> v časovači, keď začnete hovoriť.</li>
+<li>Prejdite si prezentáciu raz od začiatku do konca šípkou vpravo. Potom stlačte <b>Home</b>.</li>
+<li>Dohodnite si, kto kliká: <b>kliká ten, kto práve hovorí</b>. Druhý stojí bokom.</li>
+</ol>
+<p><b>Ovládanie:</b> <code>→</code> alebo medzerník = ďalej, <code>←</code> = späť, <code>F</code> celá obrazovka, <code>G</code> prehľad slajdov, <code>N</code> poznámky priamo na plátne, <code>P</code> okno prezentujúceho, <code>?</code> pomoc. Ak niečo zlyhá, stlačte <code>G</code> a vyberte slajd.</p>
+</div>
+
+<!-- 1 -->
+<section class="slide" id="s1"><header><span class="n">1</span><span class="t">Úvod</span><span class="chip A">A</span><span class="chip B">B</span><span class="chip time">1 min</span></header>
+<div class="lab">Na slajde</div><ul class="do"><li>Nič neklikáte. Slajd s fotkou kampusu a vašimi menami je zapnutý, kým sa predstavíte.</li></ul>
+<div class="lab">Povedzte</div>
+<div class="say A"><b>A:</b> „Dobrý deň, ja som Dávid Horník. Vyštudoval som Katedru ekonomiky na našej fakulte a teraz tam robím doktorandské štúdium.“</div>
+<div class="say B"><b>B:</b> „Ja som Michal Buchta, som doktorand na Katedre spojov.“</div>
+<div class="say A"><b>A:</b> „Dnes vám ukážeme, ako vyzerá štúdium na Žilinskej univerzite, hlavne na našej fakulte. Nebude to reklama. Ukážeme, čo sa tam dá študovať, ako sa tam dostať a čo vás čaká.“</div>
+<div class="say B"><b>B:</b> „Na konci bude kvíz, tak dávajte pozor.“</div>
+<div class="ask"><b>Otázka:</b> „Kto z vás už vie, kam pôjde po maturite? Ruky hore.“ (Počkajte 5 sekúnd, nekomentujte.)</div>
+<div class="lab">Prechod</div><p><b>A</b> stlačí <code>→</code>: „Začneme tým, čo je vlastne UNIZA.“</p></section>
+
+<!-- 2 -->
+<section class="slide" id="s2"><header><span class="n">2</span><span class="t">Univerzita, ktorá začínala na koľajniciach</span><span class="chip A">A</span><span class="chip time">2 min</span></header>
+<div class="lab">Na slajde</div><ul class="do"><li>Nič neklikáte, prečítate to, čo je vidieť. Pri slove FPEDAS ukážte rukou na modrý riadok hore.</li></ul>
+<div class="lab">Povedzte</div>
+<div class="say A"><b>A:</b> „Žilinská univerzita vznikla v roku 1953 a volala sa Vysoká škola železničná. Preto hovoríme, že sme začínali na koľajniciach.“</div>
+<div class="say A"><b>A:</b> „Dnes má šesť fakúlt, od dopravy cez stroje, elektrotechniku a stavby až po informatiku a bezpečnosť, a vyše 7 700 študentov.“</div>
+<div class="say A"><b>A:</b> „My sme FPEDAS, Fakulta prevádzky a ekonomiky dopravy a spojov. Celá ďalšia prezentácia bude hlavne o nej.“</div>
+<div class="say A"><b>A:</b> <span class="ph">[doplň: čo ťa prekvapilo, keď si na univerzitu prišiel]</span></div>
+<div class="warn"><b>Pozor:</b> fakúlt je <b>šesť</b>, nie sedem. Ústav mediamatiky a kultúrneho dedičstva (dole prerušovane) je ústav, nie fakulta. Ak sa niekto opýta na „humanitnú fakultu“: dnes už nie je samostatnou fakultou.</div>
+<div class="lab">Prechod</div><p><b>A:</b> „Kde to celé je? Odovzdám slovo Michalovi.“ <b>B</b> stlačí <code>→</code>.</p></section>
+
+<!-- 3 -->
+<section class="slide" id="s3"><header><span class="n">3</span><span class="t">Kampus: interaktívna mapa</span><span class="chip B">B</span><span class="chip time">3,5 min</span></header>
+<div class="lab">Klikajte v tomto poradí</div>
+<ol class="do">
+<li>Slajd sa otvorí s vybranou <b>FPEDAS</b> (oranžová menovka na mape).</li>
+<li>Klik na <b>SjF</b>, potom <b>FEIT</b>, potom <b>SvF</b> v zozname vpravo. Pri každej prečítajte jednu vetu z karty dole.</li>
+<li>Klik na <b>FRI</b>: mapa sa oddiali na celý areál.</li>
+<li>Klik na záložku <b>Študentský život</b>.</li>
+<li>Klik na <b>Hliny V</b>, potom <b>NM</b> (Nová menza), potom <b>Šport</b>.</li>
+<li>Na konci klik <b>Fakulty</b> späť (slajd nechajte pripravený).</li>
+</ol>
+<div class="lab">Povedzte</div>
+<div class="say B"><b>B:</b> „Toto je skutočná mapa areálu, sever je hore. Všetko je na jednom mieste: fakulty, knižnica, menza, štadión.“</div>
+<div class="say B"><b>B:</b> „Naša fakulta je oranžová menovka. Vedľa nej sú ďalšie: strojnícka, elektrotechnická, stavebná.“ (Klikajte a čítajte.)</div>
+<div class="say B"><b>B:</b> „Fakulta riadenia a informatiky je trochu bokom. Fakulta bezpečnostného inžinierstva je v centre mesta, tá na mape nie je.“</div>
+<div class="say B"><b>B:</b> „Teraz študentský život. Naši študenti bývajú na internáte Hliny V, asi desať minút pešo od centra mesta. Jedlo v jedálni stojí od 1,30 do 4,80 eura. Šport: nový štadión, nové športové centrum a až 30 športov na výber.“</div>
+<div class="say B"><b>B:</b> <span class="ph">[doplň: kde bývaš ty / ako vyzerá tvoj deň]</span></div>
+<div class="ask"><b>Otázka:</b> „Kto z vás už bol niekedy na vysokoškolskom kampuse?“</div>
+<div class="warn"><b>Pozor:</b> študenti FPEDAS bývajú na <b>Hlinách V</b>, nie na Veľkom Diele (ten je pre iné fakulty, ostatní len podľa voľnej kapacity).</div>
+<div class="lab">Prechod</div><p><b>B:</b> „Teraz sa vrátime k tomu, čo robí naša fakulta. Dávid.“ <b>A</b> stlačí <code>→</code>.</p></section>
+
+<!-- 4 -->
+<section class="slide" id="s4"><header><span class="n">4</span><span class="t">Nie je to len doprava</span><span class="chip A">A</span><span class="chip time">3,5 min</span></header>
+<div class="lab">Klikajte v tomto poradí</div>
+<ol class="do"><li>Najprv NEKLIKAJTE: spýtajte sa publika.</li><li>Potom klikajte stanice <b>1 → 2 → 3 → 4 → 5</b> a pri každej si prečítajte vetu aj odkaz vpravo.</li></ol>
+<div class="lab">Povedzte</div>
+<div class="say A"><b>A:</b> „Názov fakulty znie dopravne. Ale ukážem vám, že je to omnoho viac.“</div>
+<div class="ask"><b>Otázka:</b> „Čo sa podľa vás stane hneď po tom, čo v e-shope kliknete na Objednať?“ (Vypočujte 2–3 odpovede.)</div>
+<div class="say A"><b>A:</b> <i>(stanica 1, Objednávka)</i> „E-shop prijme objednávku. Riadiť e-shop, predaj a obchodné procesy sa učí v programe Elektronický obchod a manažment.“</div>
+<div class="say A"><b>A:</b> <i>(stanica 2, Peniaze)</i> „Platba prejde. Firma musí vedieť, koľko zarobila a čo ju to stálo. To je Finančný manažment a Ekonomika a manažment podniku.“</div>
+<div class="say A"><b>A:</b> <i>(stanica 3, Sklad a preprava)</i> „Tovar sa zbalí a niekto musí objednať prepravu. To robí zasielateľ alebo dopravný manažér. Program Zasielateľstvo a logistika.“</div>
+<div class="say A"><b>A:</b> <i>(stanica 4, Na ceste)</i> „Zásielka ide po ceste, po železnici, vzduchom alebo po vode. Na to máme štyri dopravné programy.“</div>
+<div class="say A"><b>A:</b> <i>(stanica 5, Doručenie)</i> „A na konci je doručenie cez distribučné siete a poštu. Program Distribučné technológie a služby.“</div>
+<div class="say A"><b>A:</b> „Z jednej objednávky vám vyšlo päť rôznych povolaní. Toto je FPEDAS: ekonomika a doprava dokopy.“</div>
+<div class="say A"><b>A:</b> <span class="ph">[doplň: prečo si si vybral ekonomiku na dopravnej fakulte]</span></div>
+<div class="lab">Prechod</div><p><b>A:</b> „Kto všetko to na fakulte učí? Michal.“ <b>B</b> stlačí <code>→</code>.</p></section>
+
+<!-- 5 -->
+<section class="slide" id="s5"><header><span class="n">5</span><span class="t">Sedem katedier</span><span class="chip B">B</span><span class="chip time">2,5 min</span><span class="chip opt">možno vynechať</span></header>
+<div class="lab">Klikajte</div>
+<ol class="do"><li>Katedra spojov je už otvorená.</li><li>Kliknite <b>Katedra ekonomiky</b> (otvorí sa jej popis).</li><li>Ak je čas, kliknite aj <b>Katedra kvantitatívnych metód</b>.</li></ol>
+<div class="lab">Povedzte</div>
+<div class="say B"><b>B:</b> „Fakulta má sedem katedier. Je to 1 972 študentov a 21 306 absolventov. Spolu 22 študijných programov, rátam bakalárske, inžinierske aj doktorandské.“</div>
+<div class="say B"><b>B:</b> „Ja som na Katedre spojov. To je katedra pre informačné technológie, poštové, logistické a zasielateľské služby.“</div>
+<div class="say B"><b>B:</b> „Dávid je na Katedre ekonomiky. Tá učí ekonomické, právne a sociálne predmety na celej fakulte.“</div>
+<div class="say B"><b>B:</b> <span class="ph">[doplň: čo konkrétne robíš na katedre]</span></div>
+<div class="warn"><b>Ak vás čas tlačí, tento slajd preskočte</b> a hneď povedzte: „Ja som z Katedry spojov, Dávid z Katedry ekonomiky.“</div>
+<div class="lab">Prechod</div><p><b>B:</b> „A teraz to hlavné: čo sa dá študovať.“ <b>A</b> stlačí <code>→</code>.</p></section>
+
+<!-- 6 -->
+<section class="slide" id="s6"><header><span class="n">6</span><span class="t">Deväť programov, štyri svety</span><span class="chip A">A</span><span class="chip B">B</span><span class="chip time">4 min</span></header>
+<div class="lab">Klikajte (kto hovorí, ten kliká)</div>
+<ol class="do">
+<li><b>A:</b> Ekonomika a manažment podniku → Finančný manažment → Elektronický obchod a manažment.</li>
+<li><b>B:</b> Distribučné technológie a služby → Zasielateľstvo a logistika → Železničná doprava → Letecká doprava → Vodná doprava.</li>
+</ol>
+<div class="lab">Povedzte</div>
+<div class="say A"><b>A:</b> „Programov je deväť a sú v štyroch svetoch. Nejde o názvy, ale o to, čo budete robiť.“</div>
+<div class="say A"><b>A:</b> <i>(Ekonomika a manažment podniku)</i> „Učíte sa, ako funguje firma: financie, marketing, riadenie ľudí. Najväčší program, 140 miest. Uplatníte sa v riadení podnikov.“</div>
+<div class="say A"><b>A:</b> <i>(Finančný manažment)</i> „Financie podniku. Napríklad finančný manažér projektov a grantov z Európskej únie.“</div>
+<div class="say A"><b>A:</b> <i>(Elektronický obchod)</i> „Online podnikanie. Obchodný zástupca, manažér predaja, konzultant, alebo vlastný podnik v obchode a službách.“</div>
+<div class="say B"><b>B:</b> <i>(Distribučné technológie)</i> „Ako prejde zásielka sieťou od odosielateľa k adresátovi. Pošta, logistické firmy, ale aj banky a poisťovne.“</div>
+<div class="say B"><b>B:</b> <i>(Zasielateľstvo a logistika)</i> „Plánovanie a objednávanie prepravy. Zasielateľ alebo dopravný manažér.“</div>
+<div class="say B"><b>B:</b> <i>(Železničná)</i> „Počas štúdia môžete urobiť kurzy so ŽSR, napríklad na výpravcu. <i>(Letecká)</i> Je tu aj profesionálny pilot, teóriu na licenciu ATPL máte zadarmo, prax si hradí študent. Dá sa aj po anglicky. <i>(Vodná)</i> Najmenší program, 25 miest. Začnete ako lodný kadet a môžete sa stať kapitánom.“</div>
+<div class="ask"><b>Otázka:</b> „Ktorý z týchto programov by ste na dopravnej fakulte nečakali?“</div>
+<div class="warn"><b>Ak sa niekto opýta na „dopravné služby v osobnej doprave“:</b> ten program je v zozname 2026/2027, ale pre rok 2027/2028 už nie je v ponuke fakulty.</div>
+<div class="lab">Prechod</div><p><b>B:</b> „Ako na seba štúdium nadväzuje? Dávid.“ <b>A</b> stlačí <code>→</code>.</p></section>
+
+<!-- 7 -->
+<section class="slide" id="s7"><header><span class="n">7</span><span class="t">Tri stupne na jednej fakulte</span><span class="chip A">A</span><span class="chip time">2,5 min</span></header>
+<div class="lab">Klikajte</div>
+<ol class="do"><li>Kliknite <b>Ekonomika a manažment podniku</b> v ľavom stĺpci: oranžová čiara ukáže pokračovanie.</li><li>Kliknite <b>Vodná doprava</b>: čiara zmizne.</li></ol>
+<div class="lab">Povedzte</div>
+<div class="say A"><b>A:</b> „Štúdium má tri stupne. Bakalár trvá tri roky, inžinier dva roky a doktorand tri roky.“</div>
+<div class="say A"><b>A:</b> „Keď kliknem na bakalársky program, vidíte, na čo nadväzuje inžinierske štúdium. Ekonomika podniku pokračuje ako Ekonomika podniku.“</div>
+<div class="say A"><b>A:</b> „Pri vodnej doprave čiara nie je: inžiniersky program rovnakého názvu nemáme. Aktuálnu ponuku si treba overiť, keď bakalára končíte.“</div>
+<div class="say A"><b>A:</b> „Doktorand je tretí stupeň, na fakulte je ročne len pár miest. Spravidla ho robia študenti s výbornými výsledkami alebo tí, čo sa zapájajú do výskumu. Denné štúdium v štandardnej dĺžke je na univerzite bezplatné.“</div>
+<div class="say A"><b>A:</b> <span class="ph">[doplň svoju cestu: bakalár → inžinier → doktorand, prečo si pokračoval, čo ťa bavilo]</span></div>
+<div class="ask"><b>Otázka:</b> „Viete, aký je rozdiel medzi bakalárom a inžinierom?“</div>
+<div class="lab">Prechod</div><p><b>A:</b> „A čo sa deje mimo prednášok? Michal.“ <b>B</b> stlačí <code>→</code>.</p></section>
+
+<!-- 8 -->
+<section class="slide" id="s8"><header><span class="n">8</span><span class="t">Štúdium nie sú len prednášky</span><span class="chip B">B</span><span class="chip time">2,5 min</span><span class="chip opt">možno vynechať</span></header>
+<div class="lab">Klikajte</div>
+<ol class="do"><li>Kliknite postupne všetky štyri karty (po kliknutí sa rozbalia).</li></ol>
+<div class="lab">Povedzte</div>
+<div class="say B"><b>B:</b> „Štúdium nie sú len prednášky. Fakulta spolupracuje s firmami, napríklad so Slovenskou poštou. UNIZA spolupracuje aj s Huawei, Siemens, ŽSR či Kia.“</div>
+<div class="say B"><b>B:</b> „Máme špecializované laboratóriá. AIDC je laboratórium pre technológie automatickej identifikácie a zberu dát. HMI-LAB v univerzitnom vedeckom parku skúma, ako ľudia vnímajú technológie, napríklad podľa pohľadu očí alebo mozgovej aktivity.“</div>
+<div class="say B"><b>B:</b> „Predmet Povolanie podnikateľ je pre všetky fakulty. Od nápadu k startupu, s mentormi, a na konci súťaž. Ideálne pre vás, čo máte obchodné zameranie.“</div>
+<div class="say B"><b>B:</b> „Do školy chodia aj ľudia z praxe. Nedávno prišiel vedúci tímu dopravy zo spoločnosti Kaufland a prednášal o reverznej logistike, teda o spätných zvozoch.“</div>
+<div class="say B"><b>B:</b> <span class="ph">[doplň: laboratórium, projekt alebo exkurzia, v ktorej si bol ty]</span></div>
+<div class="lab">Prechod</div><p><b>B:</b> „A teraz niečo, čo vás môže zaujímať: peniaze počas štúdia.“ <b>B</b> stlačí <code>→</code>.</p></section>
+
+<!-- 9 -->
+<section class="slide" id="s9"><header><span class="n">9</span><span class="t">Štipendium už počas štúdia</span><span class="chip B">B</span><span class="chip time">2 min</span></header>
+<div class="lab">Na slajde</div><ul class="do"><li>Nič neklikáte. Ukážte na dva rámčeky (750 € a 600 €) a potom na postup vpravo.</li></ul>
+<div class="lab">Povedzte</div>
+<div class="say B"><b>B:</b> „Niektoré firmy platia štipendium už počas štúdia. Slovenská pošta takto podporuje študentov našej Katedry spojov.“</div>
+<div class="say B"><b>B:</b> „Ak máte z povinných predmetov priemer do 1,5, dostanete 750 eur za semester. Do priemeru 2,5 je to 600 eur za semester.“</div>
+<div class="say B"><b>B:</b> „Je to pre študentov denného štúdia: bakalárske programy Distribučné technológie a služby a Elektronický obchod a manažment od tretieho ročníka, inžinierske štúdium od prvého.“</div>
+<div class="say B"><b>B:</b> „Postup: pošlete žiadosť, prídete na pohovor, absolvujete lekársku prehliadku a podpíšete zmluvu.“</div>
+<div class="say B"><b>B:</b> „Čo z toho máte: tému záverečnej práce, prax na pošte, projekty a garantované pracovné miesto. Treba povedať aj druhú stranu: po štátniciach sa zaväzujete trojročnou pracovnou zmluvou.“</div>
+<div class="ask"><b>Otázka na kontrolu:</b> „Je to 750 eur mesačne alebo za semester?“ (Za semester.)</div>
+<div class="warn"><b>Pozor:</b> nič nesľubujte nad rámec slajdu. Podrobnosti sú na stránke Katedry spojov, časť Uchádzači → Štipendijný program (ks.uniza.sk).</div>
+<div class="lab">Prechod</div><p><b>B:</b> „Čo by ste mohli robiť po škole? Dávid aj ja.“ <b>A</b> stlačí <code>→</code>.</p></section>
+
+<!-- 10 -->
+<section class="slide" id="s10"><header><span class="n">10</span><span class="t">Kde sa môžeš uplatniť</span><span class="chip A">A</span><span class="chip B">B</span><span class="chip time">2,5 min</span><span class="chip opt">možno vynechať</span></header>
+<div class="lab">Klikajte</div>
+<ol class="do"><li><b>A:</b> klik na „Finančný manažér projektov a grantov EÚ“ a na „Manažér predaja“.</li><li><b>B:</b> klik na „Zasielateľ“ a na „Lodný kadet, neskôr kapitán“.</li></ol>
+<div class="lab">Povedzte</div>
+<div class="say A"><b>A:</b> „Pri každej pozícii dole vidíte, z ktorého programu vedie. Toto sú pozície z oficiálnych profilov absolventov.“</div>
+<div class="say A"><b>A:</b> „Z ekonomiky napríklad manažér predaja alebo finančný manažér projektov.“</div>
+<div class="say B"><b>B:</b> „Z logistiky a dopravy zasielateľ, dopravný manažér, a z vodnej dopravy lodný kadet a neskôr kapitán.“</div>
+<div class="say A"><b>A:</b> <span class="ph">[doplň: čím chceš byť po doktoráte / kde pracujú tvoji spolužiaci]</span></div>
+<div class="warn"><b>Nehovorte o platoch ani o tom, koľko absolventov nájde prácu.</b> Tieto čísla nemáme overené.</div>
+<div class="ask"><b>Otázka:</b> „Ktorá z týchto pozícií by vás bavila?“</div>
+<div class="lab">Prechod</div><p><b>A:</b> „Ako sa na fakultu dostať? To vám poviem teraz.“ <b>A</b> stlačí <code>→</code>.</p></section>
+
+<!-- 11 -->
+<section class="slide" id="s11"><header><span class="n">11</span><span class="t">Aj bez prijímačiek?</span><span class="chip A">A</span><span class="chip time">3 min</span></header>
+<div class="lab">Klikajte</div>
+<ol class="do">
+<li>Najprv je zvolené <b>SOŠ, akadémia</b> a priemer 1,5. Povedzte, čo vidno (modré riadky = bez skúšky).</li>
+<li>Spýtajte sa publika na priemer z <b>tretieho ročníka</b> a nastavte ho tlačidlami <b>+ / −</b> (alebo klávesmi <code>↑ ↓</code>). Skúste 1,2, potom 1,6.</li>
+<li>Ak sa niekto pýta za gymnázium, kliknite <b>Gymnázium</b> (alebo <code>T</code>).</li>
+</ol>
+<div class="lab">Povedzte</div>
+<div class="say A"><b>A:</b> „Prijímačky nie sú pre všetkých povinné. Ak máte maturitu zo slovenčiny alebo češtiny a dosť dobrý priemer za predposledný ročník, prijmú vás bez skúšky.“</div>
+<div class="say A"><b>A:</b> „Pre vašu školu platí: Ekonomika podniku do 1,20. Finančný manažment, E-commerce a letecká doprava do 1,50. Ostatné programy do 1,60.“</div>
+<div class="say A"><b>A:</b> „Stačí splniť jednu podmienku: priemer, úspech v súťaži (napríklad Ekonomická olympiáda, Mladý účtovník, súťaž pre obchodné akadémie), alebo test SCIO s percentilom aspoň 50.“</div>
+<div class="say A"><b>A:</b> „Ak nič z toho, robí sa test: všeobecné vedomosti, matematika a cudzí jazyk.“</div>
+<div class="say A"><b>A:</b> „Termíny si zapíšte: deň otvorených dverí 5. februára 2027, prihláška do 31. marca 2027, prijímačky 1. až 2. júna 2027. Prihláška stojí 40 eur a na každý program sa podáva zvlášť.“</div>
+<div class="warn"><b>Pozor:</b> stredné priemyselné školy majú pri niektorých programoch iné limity. Ak sa niekto opýta, odkážte na zásady prijatia na webe fakulty.</div>
+<div class="ask"><b>Otázka:</b> „Aký priemer ste mali v treťom ročníku?“ (Len dobrovoľne, nikoho nenúťte.)</div>
+<div class="lab">Prechod</div><p><b>A:</b> „Teraz zvyšok: ako sa žije na univerzite. Michal.“ <b>B</b> stlačí <code>→</code>.</p></section>
+
+<!-- 12 -->
+<section class="slide" id="s12"><header><span class="n">12</span><span class="t">Čo ťa čaká mimo prednášok</span><span class="chip B">B</span><span class="chip time">3 min</span></header>
+<div class="lab">Klikajte</div>
+<ol class="do"><li>Prvá karta (Bývanie) je už rozbalená. Kliknite <b>Jedlo</b>, <b>Šport</b> a <b>Peniaze</b>. Ostatné podľa záujmu.</li></ol>
+<div class="lab">Povedzte</div>
+<div class="say B"><b>B:</b> „Bývanie stojí 59 až 71 eur mesačne a nárok naň majú všetci prváci bakalárskeho štúdia. Študenti našej fakulty bývajú na Hlinách.“</div>
+<div class="say B"><b>B:</b> „Jedlo v univerzitnej jedálni stojí 1,30 až 4,80 eura.“</div>
+<div class="say B"><b>B:</b> „Šport: až 30 športov, nový štadión, nové športové centrum.“</div>
+<div class="say B"><b>B:</b> „Štipendiá: sociálne aj motivačné, za výsledky alebo mimoriadny úspech. O motivačné netreba žiadať.“</div>
+<div class="say B"><b>B:</b> „Sú tu aj študentské organizácie, napríklad rádio RAPEŠ na Hlinách. A Erasmus+ na štúdium v zahraničí.“</div>
+<div class="say B"><b>B:</b> <span class="ph">[doplň: ako vyzerá tvoj bežný deň / čo ťa na štúdiu bavilo mimo školy]</span></div>
+<div class="ask"><b>Otázka:</b> „Čo vás zaujíma najviac: bývanie, jedlo alebo šport?“</div>
+<div class="lab">Prechod</div><p><b>B:</b> „A teraz kvíz. Zistíme, čo ste si zapamätali.“ <b>A</b> stlačí <code>→</code>.</p></section>
+
+<!-- 13 -->
+<section class="slide" id="s13"><header><span class="n">13</span><span class="t">Kvíz</span><span class="chip A">A</span><span class="chip B">B</span><span class="chip time">3 min</span></header>
+<div class="lab">Postup (opakujte trikrát)</div>
+<ol class="do"><li>Jeden z vás prečíta otázku a štyri možnosti.</li><li>Publikum hlasuje <b>rukami</b>: „Kto je za A? Kto za B?“…</li><li>Potom kliknite správnu odpoveď (alebo stlačte <code>1</code> až <code>4</code>). Zelená je správna.</li><li>Prečítajte zaujímavosť, ktorá sa zobrazí, a kliknite <b>Ďalšia otázka</b> (alebo <code>Enter</code>).</li></ol>
+<table><tr><th>#</th><th>Otázka</th><th>Správna odpoveď</th></tr>
+<tr><td>1</td><td>Ako sa pôvodne volala univerzita, ktorá vznikla v roku 1953?</td><td><b>A:</b> Vysoká škola železničná</td></tr>
+<tr><td>2</td><td>Ktorý z odborov sa naozaj dá študovať na FPEDAS?</td><td><b>B:</b> Vodná doprava</td></tr>
+<tr><td>3</td><td>Koľko stojí prihláška na bakalárske štúdium (občan EÚ)?</td><td><b>B:</b> 40 €</td></tr></table>
+<div class="lab">Povedzte na konci</div>
+<div class="say"><b>A:</b> „Kto mal všetky tri správne? Výborne. Kto dve? Tiež dobré.“ (Skóre na obrazovke závisí od toho, čo ste klikli vy, berte ho len ako hru.)</div>
+<div class="lab">Prechod</div><p><b>B:</b> „Ďakujeme za pozornosť, ešte posledný slajd.“ <b>A</b> stlačí <code>→</code>.</p></section>
+
+<!-- 14 -->
+<section class="slide" id="s14"><header><span class="n">14</span><span class="t">Príď sa pozrieť</span><span class="chip A">A</span><span class="chip B">B</span><span class="chip time">1 min + otázky</span></header>
+<div class="lab">Na slajde</div><ul class="do"><li>Nič neklikáte. Vy dvaja stojíte vedľa slajdu a necháte ho zapnutý počas otázok.</li></ul>
+<div class="lab">Povedzte</div>
+<div class="say A"><b>A:</b> „Tu sú tri QR kódy: ponuka štúdia, prijímacie konanie a elektronická prihláška. Odfoťte si ich, kým je slajd zapnutý.“</div>
+<div class="say B"><b>B:</b> „Najlepšie je prísť sa pozrieť: deň otvorených dverí je 5. februára 2027. Prihlášku treba podať do 31. marca 2027.“</div>
+<div class="say B"><b>B:</b> „Ak niečo nebudete vedieť, napíšte študijnému oddeleniu: fpedas-studref@uniza.sk, telefón 041 / 513 30 53.“</div>
+<div class="say A"><b>A:</b> „Ďakujeme. Máte nejaké otázky?“</div>
+
+<h2 id="faq">Otázky z publika: rýchle odpovede</h2>
+<table>
+<tr><th>Otázka</th><th>Odpoveď (overená)</th></tr>
+<tr><td>Musím robiť prijímačky?</td><td>Nie vždy. Stačí splniť jednu z podmienok: priemer za predposledný ročník v limite programu, úspech v súťaži alebo SCIO percentil 50. Inak je test. Pozri slajd 11.</td></tr>
+<tr><td>Platí sa za štúdium?</td><td>Denné štúdium v štandardnej dĺžke na UNIZA je bezplatné. Platí sa prihláška (40 €), ubytovanie a jedlo.</td></tr>
+<tr><td>Kde budem bývať?</td><td>Študenti FPEDAS na internáte Hliny V, 59 – 71 € mesačne. Nárok majú všetci prváci bakalárskeho štúdia.</td></tr>
+<tr><td>Dá sa študovať po anglicky?</td><td>Letecká doprava je v ponuke aj v angličtine (15 miest). Niektoré inžinierske programy tiež.</td></tr>
+<tr><td>Koľko ľudí prijímate?</td><td>Bakalárske štúdium 2027/2028: plánovaných 720 miest v slovenčine (a 15 v angličtine na leteckej doprave).</td></tr>
+<tr><td>Aký plat budem mať po škole?</td><td>Nemáme overené údaje, nehovorte čísla. Odkážte na pozície na slajde 10.</td></tr>
+<tr><td>Kde nájdem presné informácie?</td><td>fpedas.uniza.sk, časť Uchádzači. QR kódy sú na poslednom slajde.</td></tr>
+<tr><td>Môžem prísť na návštevu?</td><td>Deň otvorených dverí FPEDAS je 5. 2. 2027.</td></tr>
+<tr><td>Je štipendium povinné?</td><td>Štipendijný program Slovenskej pošty je dobrovoľný, ale po štátniciach sa študent zaväzuje trojročnou pracovnou zmluvou. Podmienky sú na ks.uniza.sk.</td></tr>
+<tr><td>Čo ak neviem odpovedať?</td><td>Povedzte: „To neviem presne, pozrite si to na webe fakulty alebo napíšte študijnému oddeleniu.“ Je to úplne v poriadku.</td></tr>
+</table>
+</section>
+
+<h2 id="pravidla">Čo nehovoriť</h2>
+<div class="box"><ul>
+<li><b>Platy, štatistiky uplatnenia, poradie univerzity.</b> Nemáme overené čísla.</li>
+<li><b>„Máme sedem fakúlt.“</b> Je ich šesť.</li>
+<li><b>„Bývame na Veľkom Diele.“</b> Študenti FPEDAS bývajú na Hlinách V.</li>
+<li><b>„Každého prijmú.“</b> Programy majú plánované počty miest, fakulta si vyhradzuje právo program neotvoriť pri nízkom záujme.</li>
+<li><b>Sľuby o štipendiu</b> nad rámec toho, čo je na slajde 9.</li>
+<li>Nič si nevymýšľajte. Ak niečo neviete, povedzte to.</li>
+</ul></div>
+
+<h2>Ak zlyhá technika</h2>
+<div class="box"><ul>
+<li>Neotvára sa stránka: otvorte <code>index.html</code> zo stiahnutého priečinka.</li>
+<li>Nefunguje klikanie: prechádzajte šípkami, slajdy sa dajú čítať aj bez klikania.</li>
+<li>Stratili ste miesto: stlačte <code>G</code> (prehľad slajdov) a vyberte slajd.</li>
+<li>Nefunguje projektor: prezentujte z notebooku a čítajte z okna prezentujúceho (<code>P</code>).</li>
+</ul></div>
+</main>
+</body>
+</html>

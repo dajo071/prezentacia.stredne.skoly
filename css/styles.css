@@ -177,10 +177,9 @@ button.tile:active{transform:scale(.985)}
 .prow[aria-pressed=true] .a{color:#fff}.prow[aria-pressed=true] .n{color:#C7D3EA}
 .prow.hero{border-color:var(--blue)}
 .detail{border:2px solid var(--line);border-radius:var(--r);background:var(--surface);padding:24px 32px;flex:1;display:flex;flex-direction:column;gap:12px;min-height:0;position:relative;overflow:hidden}
-.detail::before{content:"";position:absolute;left:0;top:0;bottom:0;width:12px;background:var(--c,var(--navy))}
-.detail h3{font-size:36px;padding-left:10px;line-height:1.12}
-.detail p{font-size:26px;line-height:1.34;padding-left:10px}
-.detail .small{padding-left:10px}
+.detail h3{font-size:36px;line-height:1.12}
+.detail p{font-size:26px;line-height:1.34}
+.detail .small{padding-left:0}
 .detail .swap{animation:fade .35s both;display:flex;flex-direction:column;gap:12px}
 
 /* ---------- 04 prečo FPEDAS ---------- */
@@ -288,7 +287,7 @@ button.litem:hover{border-color:var(--navy)}
 .s-prax .band::after{content:"";position:absolute;inset:0;background:rgba(0,31,82,.46)}
 .s-prax h2{position:absolute;left:112px;bottom:auto;top:200px;color:#fff;z-index:2;font-size:84px}
 .s-prax .logo{position:absolute;left:112px;top:62px;height:78px;z-index:2}
-.pcards{position:absolute;left:112px;right:112px;top:420px;display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.pcards{position:absolute;left:112px;right:112px;top:420px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .pc{display:flex;flex-direction:column;gap:10px;padding:26px 26px 28px;min-height:430px;align-items:flex-start}
 .pc .t{font-size:27px;line-height:1.3;color:var(--ink);font-weight:600;margin-top:4px}
 .pc .s{font-size:21px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
@@ -304,7 +303,7 @@ button.litem:hover{border-color:var(--navy)}
 /* ---------- 10 po škole ---------- */
 .s-jobs{padding-top:72px}
 .jcols{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:40px}
-.jcol h3{font-size:27px;margin-bottom:16px;display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:0;line-height:1.15}
+.jcol h3{font-size:23px;margin-bottom:16px;display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:0;line-height:1.15;white-space:nowrap;height:32px}
 .jcol h3 i{width:22px;height:22px;border-radius:7px;background:var(--c);flex:none}
 .jcol .items{display:flex;flex-direction:column;gap:12px}
 .role{padding:18px 24px;font-size:30px;font-weight:600;line-height:1.2;color:var(--navy);border-radius:20px;min-height:112px;display:flex;align-items:center}
@@ -449,3 +448,21 @@ button.litem:hover{border-color:var(--navy)}
 }
 
 .ed.flash{box-shadow:0 0 0 3px var(--signal);background:#fff}
+
+/* odkazy na programy (slajd 4): text s podčiarknutím, bez rámika */
+.plinks{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.plink{display:inline-flex;align-items:center;gap:10px;font-size:30px;font-weight:700;color:var(--navy);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:7px;text-decoration-color:var(--line-2);transition:text-decoration-color .2s,gap .2s}
+.plink:hover{text-decoration-color:var(--signal);gap:16px}
+.plink .ic{font-size:30px}
+
+/* štipendium */
+.s-stip{display:grid;grid-template-columns:900px 1fr;gap:96px;padding-top:72px;align-items:start}
+.s-stip .l{display:flex;flex-direction:column;gap:30px}
+.s-stip h2{font-size:84px}
+.amts{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.amt{border:2px solid var(--line);border-radius:var(--r);background:var(--surface);padding:30px 32px}
+.amt:first-child{border-color:var(--signal)}
+.amt b{display:block;font-size:104px;line-height:1;font-weight:800;letter-spacing:-.04em;color:var(--navy);font-variant-numeric:tabular-nums}
+.amt span{display:block;margin-top:12px;font-size:26px;line-height:1.3;color:var(--mute)}
+.s-stip .r{display:flex;flex-direction:column;gap:30px;padding-top:12px}
+.s-stip .r h3{font-size:44px}

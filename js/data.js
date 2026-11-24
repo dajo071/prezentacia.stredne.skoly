@@ -8,8 +8,8 @@ window.DECK = (function () {
 
   /* ---------- Prezentujúci (doplniť pred prezentáciou; možno prepísať aj priamo v slajde 13 – klávesa E) ---------- */
   var PRESENTERS = {
-    A: { name: '', dept: 'Katedra ekonomiky', role: 'Doktorand, absolvent Katedry ekonomiky' },
-    B: { name: '', dept: 'Katedra spojov', role: 'Doktorand Katedry spojov' }
+    A: { name: 'Ing. Dávid Horník', dept: 'Katedra ekonomiky', role: 'Doktorand, absolvent Katedry ekonomiky' },
+    B: { name: 'Ing. Michal Buchta', dept: 'Katedra spojov', role: 'Doktorand Katedry spojov' }
   };
 
   /* ---------- Oficiálne zdroje ---------- */
@@ -32,6 +32,8 @@ window.DECK = (function () {
     mapa25:   { t: 'UNIZA: Areál Veľký Diel – mapa parkovísk (11/2025, PNG)', u: 'https://www.uniza.sk/images/fotogaleria/mapa/10112025_UNIZA-mapa-parkoviska.png' },
     manual:   { t: 'UNIZA: Dizajn manuál (farby, logo, písmo Public Sans)', u: 'https://www.fpedas.uniza.sk/images/uradna_tabula/dizajn_manual_UNIZA.pdf' },
     loga:     { t: 'UNIZA: Oficiálne logá', u: 'https://www.uniza.sk/index.php/verejnost/informacne-materialy/loga' },
+    stip:     { t: 'Katedra spojov: Štipendijný program', u: 'https://ks.uniza.sk/sk/uchadzaci/stipendijny-program' },
+    hmi:      { t: 'HMI-LAB UNIZA', u: 'https://hmi-lab.uniza.sk/' },
     prihlaska:{ t: 'UNIZA: Elektronická prihláška', u: 'https://vzdelavanie.uniza.sk/prijimacky/index.php' }
   };
 
@@ -54,7 +56,7 @@ window.DECK = (function () {
       bld: 'RA, RB a RC', web: 'fri.uniza.sk' },
     fbi:    { abbr: 'FBI', name: 'Fakulta bezpečnostného inžinierstva', color: '#009A44', ink: '#fff',
       focus: 'Krízový manažment, hasičské a záchranné zložky, ochrana osôb a majetku.',
-      bld: 'Mimo areálu: Ul. 1. mája 32, centrum Žiliny (budova MA)', web: 'fbi.uniza.sk', offmap: true }
+      bld: 'Ul. 1. mája 32, centrum Žiliny', web: 'fbi.uniza.sk', offmap: true }
   };
 
   /* ---------- Katedry FPEDAS (oficiálne popisy skrátené) ---------- */
@@ -101,7 +103,7 @@ window.DECK = (function () {
     { id: 'zal', n: 'Zasielateľstvo a logistika', s: 'Zasielateľstvo a logistika', cat: 'log', seats: 90, ing: true,
       learn: ['Objednávanie a plánovanie dopravných služieb', 'Znalosti podľa medzinárodných štandardov FIATA', 'Prepravné reťazce a dodávky vo výrobe a distribúcii'],
       practice: ['Objednanie prepravy pre veľkú výrobnú alebo distribučnú firmu', 'Práca v nadnárodnej logistickej spoločnosti'],
-      jobs: 'Zasielateľ, disponent, dopravný manažér; zasielateľské, dopravné a logistické firmy aj v zahraničí.',
+      jobs: 'Zasielateľ, dopravný manažér; zasielateľské, dopravné a logistické firmy aj v zahraničí.',
       limits: { gym: 1.8, sos: 1.6 }, tags: ['log', 'doprava'] },
     { id: 'cesta', n: 'Cestná doprava', s: 'Cestná doprava', cat: 'mob', seats: 120, ing: true,
       learn: ['Plánovanie a riadenie nákladnej, autobusovej dopravy a taxislužby', 'Dopravné inžinierstvo, cestné vozidlá a ich prevádzka', 'Doprava v mestách a regiónoch'],
@@ -125,21 +127,11 @@ window.DECK = (function () {
       limits: { gym: 1.8, sos: 1.6 }, tags: ['doprava'] }
   ];
 
-  /* ---------- Orientačný výber smeru ---------- */
-  var INTERESTS = [
-    { id: 'biz',  t: 'Podnikanie a ekonomika' },
-    { id: 'fin',  t: 'Financie' },
-    { id: 'eob',  t: 'Online obchod' },
-    { id: 'log',  t: 'Logistika' },
-    { id: 'doprava', t: 'Doprava' },
-    { id: 'tech', t: 'Technológie a inovácie' }
-  ];
-
   /* ---------- Cesta objednávky (slajd 4) ---------- */
   var JOURNEY = [
     { id: 'obj', t: 'Objednávka', q: 'Zákazník klikne na Objednať. E-shop prijme objednávku a spustí celý proces.', p: ['eob'], who: 'Riadenie e-shopu, predaja a obchodných procesov.' },
     { id: 'fin', t: 'Peniaze', q: 'Platba prejde. Firma musí vedieť, koľko zarobila a čo ju to stálo.', p: ['fin', 'emp'], who: 'Financie podniku, rozpočty, kalkulácie a rozhodovanie s peniazmi.' },
-    { id: 'sklad', t: 'Sklad a preprava', q: 'Tovar sa nájde, zabalí a niekto musí objednať prepravu.', p: ['zal'], who: 'Zasielateľ, disponent, dopravný manažér.' },
+    { id: 'sklad', t: 'Sklad a preprava', q: 'Tovar sa nájde, zabalí a niekto musí objednať prepravu.', p: ['zal'], who: 'Zasielateľ, dopravný manažér.' },
     { id: 'cesta', t: 'Na ceste', q: 'Zásielka putuje po ceste, železnici, vzduchom alebo po vode.', p: ['cesta', 'zel', 'let', 'vod'], who: 'Plánovanie a riadenie dopravy.' },
     { id: 'dist', t: 'Doručenie', q: 'Zásielka prejde sieťou a skončí u adresáta.', p: ['dts'], who: 'Distribučné siete a služby, poštové a logistické podniky.' }
   ];
@@ -153,7 +145,6 @@ window.DECK = (function () {
     { cat: 'eco', r: 'Obchodný zástupca', p: 'eob' },
     { cat: 'eco', r: 'Konzultant a supervízor', p: 'eob' },
     { cat: 'log', r: 'Zasielateľ', p: 'zal' },
-    { cat: 'log', r: 'Disponent', p: 'zal' },
     { cat: 'log', r: 'Dopravný manažér', p: 'zal' },
     { cat: 'log', r: 'Pracovník poštových a distribučných sietí', p: 'dts' },
     { cat: 'mob', r: 'Výpravca (po kurze so ŽSR)', p: 'zel' },
@@ -164,11 +155,10 @@ window.DECK = (function () {
 
   /* ---------- Praktické príklady (slajd 9) ---------- */
   var PRAX = [
+    { h: 'Podniky z praxe', s: 'Spolupráca', t: 'Firmy sú súčasťou štúdia.', d: 'Fakulta spolupracuje s podnikmi, napríklad so Slovenskou poštou (štipendijný program, témy záverečných prác, odborná prax). UNIZA spolupracuje aj s firmami ako Huawei, Siemens, ŽSR či Kia Motors Slovakia.', src: 'stip' },
+    { h: 'Špecializované laboratóriá', s: 'Technika na dosah', t: 'AIDC a HMI-LAB.', d: 'AIDC je laboratórium zamerané na technológie automatickej identifikácie a zberu dát. HMI-LAB v Univerzitnom vedeckom parku skúma, ako ľudia vnímajú a používajú technológie (sledovanie pohľadu, mozgová aktivita, stres).', src: 'hmi' },
     { h: 'Povolanie podnikateľ', s: 'Od nápadu k startupu', t: 'Skús si vlastný startup počas štúdia.', d: 'Celouniverzitný predmet pre študentov všetkých fakúlt. Workshopy, mentori z praxe a súťaž na konci.', src: 'sprievodca' },
-    { h: 'Kurzy so ŽSR', s: 'Železničná doprava', t: 'Odborná spôsobilosť popri štúdiu.', d: 'Počas štúdia môžeš získať odbornú spôsobilosť: signalista, dozorca výhybiek, výhybkár, výpravca.', src: 'bc' },
-    { h: 'Výcvik pilotov', s: 'Letecká doprava', t: 'Teória na licenciu ATPL zadarmo.', d: 'Letecké výcvikové a vzdelávacie centrum UNIZA. Teória na licenciu ATPL je zadarmo, prax si študenti hradia.', src: 'bc' },
-    { h: 'Prednášky z praxe', s: 'Čerstvo z fakulty', t: 'Ľudia z firiem priamo na fakulte.', d: 'Napríklad prednáška o reverznej logistike (spätné zvozy) od vedúceho tímu dopravy spoločnosti Kaufland, november 2026.', src: 'fpedas' },
-    { h: 'Summer school 2026', s: 'Medzinárodne', t: '31 študentov z 15 krajín.', d: 'Barrier-Free Public Transport: 31 študentov z 15 krajín, 29. 6. až 3. 7. 2026.', src: 'fpedas' }
+    { h: 'Prednášky z praxe', s: 'Čerstvo z fakulty', t: 'Ľudia z firiem priamo na fakulte.', d: 'Napríklad prednáška o reverznej logistike (spätné zvozy) od vedúceho tímu dopravy spoločnosti Kaufland, november 2026.', src: 'fpedas' }
   ];
 
   /* ---------- Život na univerzite (slajd 12) ---------- */
@@ -202,27 +192,25 @@ window.DECK = (function () {
     { id: 'uniza', title: 'UNIZA v skratke', who: 'A', min: 2, idea: 'UNIZA je 70-ročná univerzita so šiestimi fakultami, kde sa doprava stretáva s ekonómiou, informatikou či stavbami.',
       say: ['Začínali sme ako Vysoká škola železničná v roku 1953.', 'Dnes šesť fakúlt a viac než 7 700 študentov.', 'Povedz, čo ťa najviac prekvapilo, keď si sem prišiel (vlastná skúsenosť).'], ask: 'Poznáte niekoho, kto študuje v Žiline?' },
     { id: 'kampus', title: 'Kampus', who: 'B', min: 3.5, idea: 'Celé je to na jednom mieste. Fakulty v jednom areáli, internáty a šport hneď vedľa.',
-      say: ['Klikni na FPEDAS: budovy BF a AA.', 'Prejdi ostatné fakulty jednou vetou, mapa je rovnaká ako oficiálna.', 'Prepni na Študentský život: knižnica, menza, štadión.', 'Poznámka: FPEDAS študenti bývajú na Hlinách V, nie na Veľkom Diele.'], ask: 'Kto z vás bol niekedy na vysokoškolskom kampuse?' },
+      say: ['Klikni na FPEDAS: ukáže sa, kde fakulta sídli.', 'Prejdi ostatné fakulty jednou vetou, mapa je rovnaká ako oficiálna.', 'Prepni na Študentský život: knižnica, menza, štadión.', 'Poznámka: FPEDAS študenti bývajú na Hlinách V, nie na Veľkom Diele.'], ask: 'Kto z vás bol niekedy na vysokoškolskom kampuse?' },
     { id: 'preco', title: 'Prečo FPEDAS', who: 'A', min: 3.5, idea: 'FPEDAS nie je len o doprave. Je o všetkom, čo sa stane medzi kliknutím na Objednať a zvonením kuriéra.',
       say: ['Prejdi cestu objednávky krok za krokom a klikaj na stanice.', 'Pri každej stanici povedz, kto to rieši a ktorý program to študuje.', 'Spoj to s tým, čo robia na obchodnej škole: ekonomika, financie, zákazník.'], ask: 'Čo sa podľa vás stane hneď po kliknutí na Objednať?' },
-    { id: 'katedry', title: 'Katedry', who: 'B', min: 2.5, opt: true, idea: 'Sedem katedier, dva svety: doprava a ekonomika. Každý z nás je z jednej z nich.',
+    { id: 'katedry', title: 'Katedry', who: 'B', min: 2.5, opt: true, idea: 'Fakulta má sedem katedier. Každý z nás je z jednej z nich.',
       say: ['Čísla: 1 972 študentov, 21 306 absolventov, 22 programov (všetky stupne).', 'Katedra spojov: IKT, poštové, logistické a zasielateľské služby.', 'Katedra ekonomiky učí ekonómiu na celej fakulte.'], ask: 'Ktorá katedra vás zaujala najviac?' },
     { id: 'programy', title: 'Čo môžeš študovať', who: 'AB', min: 4, idea: 'Deväť bakalárskych programov v štyroch svetoch. Nejde o názvy, ale o to, čo budeš robiť.',
       say: ['A: Biznis a financie, e-commerce (naša oblasť).', 'B: Logistika, distribúcia a doprava.', 'Klikni na jeden program a prečítaj, čo sa naučíš a kde sa uplatníš.', 'Pozn.: Dopravné služby v osobnej doprave je len v zozname 2026/2027, v ponuke 2027/2028 nie je.'], ask: 'Ktorý z programov by ste neočakávali na dopravnej fakulte?' },
-    { id: 'smer', title: 'Nájdi svoj smer', who: 'B', min: 3, idea: 'Orientačná pomôcka: vyber, čo ťa baví, a uvidíš programy, ktoré k tomu sedia.',
-      say: ['Je to len pomôcka, nie psychologický test.', 'Nechaj publikum hlasovať rukami za 2 až 3 záujmy, potom ich zaklikaj.', 'Ukáž, že jeden záujem vedie na viacero programov.'], ask: 'Čo ťa baví najviac: peniaze, online svet, logistika alebo doprava?' },
     { id: 'stupne', title: 'Tri stupne štúdia', who: 'A', min: 2.5, idea: 'Bc., Ing., PhD.: tri stupne na jednej fakulte. Moja vlastná cesta je ukážkou.',
       say: ['Bc. 3 roky, Ing. 2 roky, PhD. 3 roky.', 'Klikni na bakalársky program a uvidíš, na čo nadväzuje.', 'Vlastná cesta: od bakalára cez inžiniera k doktorandskému štúdiu (doplniť skúsenosť).'], ask: 'Viete, čo je rozdiel medzi bakalárom a inžinierom?' },
-    { id: 'prax', title: 'Štúdium v praxi', who: 'B', min: 2.5, opt: true, idea: 'Nie sú to len prednášky. Kurzy, výcvik, projekty a ľudia z firiem.',
-      say: ['Povolanie podnikateľ je predmet, kde si skúsiš vlastný startup.', 'Kurzy so ŽSR a výcvik pilotov sú príklady prepojenia s praxou.', 'Doplň vlastný príklad projektu alebo exkurzie.'], ask: 'Čo by ste si radi vyskúšali v praxi už počas štúdia?' },
+    { id: 'prax', title: 'Štúdium v praxi', who: 'B', min: 2.5, opt: true, idea: 'Štúdium nie sú len prednášky: firmy, laboratóriá, vlastný startup.',
+      say: ['Podniky z praxe: Slovenská pošta, Kaufland, firmy spolupracujúce s univerzitou.', 'Laboratóriá: AIDC (automatická identifikácia a zber dát) a HMI-LAB.', 'Povolanie podnikateľ: predmet, kde si skúsiš vlastný startup.'], ask: 'Čo by ste si radi vyskúšali v praxi už počas štúdia?' },
+    { id: 'stipendium', title: 'Štipendium', who: 'B', min: 2, idea: 'Niektoré firmy platia štipendium už počas štúdia. Pre študentov Katedry spojov je to Slovenská pošta.',
+      say: ['750 € za semester pri priemere do 1,5, 600 € pri priemere do 2,5.', 'Postup: žiadosť, pohovor, lekárska prehliadka, zmluva.', 'Záväzok: po štátniciach trojročná pracovná zmluva. Povedz to otvorene.'], ask: 'Čo by ste robili s 750 € mesačne? (pozor: je to za semester)' },
     { id: 'po', title: 'Po škole', who: 'AB', min: 2.5, opt: true, idea: 'Konkrétne pozície z oficiálnych profilov absolventov.',
       say: ['Klikni na pozíciu: uvidíš, z ktorého programu vedie.', 'A: financie, e-commerce, manažment.', 'B: logistika, distribúcia, doprava.', 'Nehovor o platoch ani štatistikách uplatnenia: nemáme ich overené.'], ask: 'Ktorá z týchto pozícií by vás bavila?' },
     { id: 'prijatie', title: 'Ako sa dostať', who: 'A', min: 3, idea: 'Vedieť, že existuje cesta bez prijímačiek, a že termíny sú v jari.',
       say: ['Vyber typ školy a priemer za predposledný ročník.', 'Stačí splniť jednu z podmienok (priemer, súťaže, SCIO, inak test).', 'Prihláška do 31. 3. 2027, prijímačky 1. až 2. 6. 2027.', 'Najbližší deň otvorených dverí: 5. 2. 2027.'], ask: 'Aký priemer ste mali v treťom ročníku?' },
     { id: 'zivot', title: 'Život na univerzite', who: 'B', min: 3, idea: 'Bývanie, jedlo, šport a spolky. Čo ťa čaká mimo prednášok.',
       say: ['Kliknutím rozbaľ kartu, ktorá ťa zaujíma.', 'Povedz, kde bývaš a ako vyzerá bežný deň (vlastná skúsenosť).', 'Ceny sú z oficiálneho letáku 2027/2028.'], ask: 'Čo vás zaujíma najviac: bývanie, jedlo alebo šport?' },
-    { id: 'pribehy', title: 'Naše príbehy', who: 'AB', min: 3, idea: 'Dvaja ľudia, dve cesty, jedna fakulta. Autentické skúsenosti.',
-      say: ['Každý 90 sekúnd: odkiaľ som prišiel, čo mi štúdium dalo, na čom pracujem.', 'Pred prezentáciou doplň texty (klávesa E alebo klik na text).', 'Nehovor nič, čo by si nevedel podložiť.'], ask: 'Čo by ste sa nás chceli opýtať?' },
     { id: 'kviz', title: 'Kvíz', who: 'AB', min: 3, idea: 'Tri otázky na zapojenie publika. Odpovede sú z oficiálnych zdrojov.',
       say: ['Prečítaj otázku, nechaj hlasovať rukami (A, B, C, D).', 'Potom klikni na odpoveď: ukáže sa správna aj zaujímavosť.', 'Na konci vyhodnoť skóre triedy.'], ask: 'Kto mal všetky tri správne?' },
     { id: 'zaver', title: 'Záver', who: 'AB', min: 1, idea: 'Pozvánka pozrieť si univerzitu naživo a overiť si všetko na oficiálnych stránkach.',
@@ -230,5 +218,5 @@ window.DECK = (function () {
   ];
 
   return { PRESENTERS: PRESENTERS, SOURCES: SOURCES, FACULTIES: FACULTIES, DEPTS: DEPTS, CATS: CATS, PROGRAMS: PROGRAMS,
-    INTERESTS: INTERESTS, JOURNEY: JOURNEY, ROLES: ROLES, PRAX: PRAX, LIFE: LIFE, QUIZ: QUIZ, NOTES: NOTES };
+    JOURNEY: JOURNEY, ROLES: ROLES, PRAX: PRAX, LIFE: LIFE, QUIZ: QUIZ, NOTES: NOTES };
 })();

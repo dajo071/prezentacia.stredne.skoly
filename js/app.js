@@ -13,9 +13,6 @@
   function prog(id) { return D.PROGRAMS.filter(function (p) { return p.id === id; })[0]; }
 
   var stage = $('#stage'), slides = $$('.slide'), N = slides.length, cur = -1, scale = 1;
-  var store = {};
-  try { store = JSON.parse(localStorage.getItem('uniza-deck-v1') || '{}'); } catch (e) { store = {}; }
-  function save() { try { localStorage.setItem('uniza-deck-v1', JSON.stringify(store)); } catch (e) { /* plné úložisko alebo súkromný režim */ } }
 
   /* ---------- plátno 16:9 ---------- */
   function fit() {
@@ -62,23 +59,19 @@
     var st = mk('div', 'studies');
     st.appendChild(mk('div', 'small', 'Kto to rieši: <b style="color:var(--navy)">' + esc(s.who) + '</b>'));
     st.appendChild(mk('div', 'small', 'Študuješ to na FPEDAS:'));
-    var ch = mk('div', 'chips');
-    s.p.forEach(function (pid) { var p = prog(pid), b = mk('button', 'chip', esc(p.n)); b.title = 'Zobraziť program'; b.addEventListener('click', function () { openProgram(pid); }); ch.appendChild(b); });
+    var ch = mk('div', 'plinks');
+    s.p.forEach(function (pid) { var p = prog(pid), b = mk('button', 'plink', esc(p.n) + '<svg class="ic"><use href="#i-next"/></svg>'); b.title = 'Zobraziť program'; b.addEventListener('click', function () { openProgram(pid); }); ch.appendChild(b); });
     st.appendChild(ch); w.appendChild(st); d.appendChild(w);
   }
 
   /* ---------- 05 katedry ---------- */
   function buildDepts() {
     var box = $('#dgroups');
-    [['doprava', 'Doprava a spoje'], ['ekonomika', 'Ekonomika a informatika']].forEach(function (g) {
-      var wrap = mk('div', 'dgroup'); wrap.appendChild(mk('h3', '', g[1]));
-      D.DEPTS.filter(function (d) { return d.g === g[0]; }).forEach(function (d) {
-        var b = mk('button', 'dept'); b.setAttribute('aria-expanded', 'false');
-        b.innerHTML = '<div class="top"><span>' + esc(d.n) + '</span>' + (d.mine ? '<span class="chip mark">tu pôsobíme</span>' : '') + '</div><div class="more"><div><p>' + esc(d.t) + '</p></div></div>';
-        b.addEventListener('click', function () { var o = b.getAttribute('aria-expanded') === 'true'; $$('.dept').forEach(function (x) { x.setAttribute('aria-expanded', 'false'); }); b.setAttribute('aria-expanded', !o); });
-        wrap.appendChild(b);
-      });
-      box.appendChild(wrap);
+    D.DEPTS.forEach(function (d) {
+      var b = mk('button', 'dept'); b.setAttribute('aria-expanded', 'false');
+      b.innerHTML = '<div class="top"><span>' + esc(d.n) + '</span>' + (d.mine ? '<span class="chip mark">tu pôsobíme</span>' : '') + '</div><div class="more"><div><p>' + esc(d.t) + '</p></div></div>';
+      b.addEventListener('click', function () { var o = b.getAttribute('aria-expanded') === 'true'; $$('.dept').forEach(function (x) { x.setAttribute('aria-expanded', 'false'); }); b.setAttribute('aria-expanded', !o); });
+      box.appendChild(b);
     });
     $$('.dept')[4].setAttribute('aria-expanded', 'true');
   }
@@ -110,35 +103,6 @@
       '<h4>Kde sa uplatníš</h4><p>' + esc(p.jobs) + '</p></div>';
   }
   function openProgram(id) { setProgram(id); go(idxOf('s-prog')); }
-
-  /* ---------- 07 nájdi svoj smer ---------- */
-  var picks = {};
-  function buildFind() {
-    var box = $('#ints');
-    D.INTERESTS.forEach(function (it, i) {
-      var b = mk('button', 'tile int', '<kbd>' + (i + 1) + '</kbd><span>' + esc(it.t) + '</span>'); b.dataset.id = it.id; b.setAttribute('aria-pressed', 'false');
-      b.addEventListener('click', function () { togglePick(it.id); }); box.appendChild(b);
-    });
-    $('#intReset').addEventListener('click', function () { picks = {}; renderFind(); });
-    renderFind();
-  }
-  function togglePick(id) { picks[id] = !picks[id]; renderFind(); }
-  function renderFind() {
-    $$('.int').forEach(function (b) { b.setAttribute('aria-pressed', !!picks[b.dataset.id]); });
-    var act = D.INTERESTS.filter(function (i) { return picks[i.id]; });
-    var rows = D.PROGRAMS.map(function (p, k) {
-      var m = act.filter(function (i) { return p.tags.indexOf(i.id) > -1; }); return { p: p, m: m, s: m.length, k: k };
-    });
-    var max = Math.max.apply(null, rows.map(function (r) { return r.s; }));
-    if (act.length) rows.sort(function (a, b) { return b.s - a.s || a.k - b.k; });
-    var box = $('#res'); box.innerHTML = '';
-    if (!act.length) box.appendChild(mk('div', 'none', 'Vyber vľavo, čo ťa baví. Tu sa zobrazia programy FPEDAS, ktoré k tomu sedia.'));
-    rows.forEach(function (r) {
-      var cls = 'rrow' + (act.length ? (r.s === 0 ? ' dim' : (r.s === max ? ' top' : ' hit')) : '');
-      var row = mk('button', cls, '<span>' + esc(r.p.n) + '</span><span class="why">' + esc(r.m.map(function (i) { return i.t; }).join(' · ')) + '</span>');
-      row.addEventListener('click', function () { openProgram(r.p.id); }); row.title = 'Zobraziť program'; box.appendChild(row);
-    });
-  }
 
   /* ---------- 08 stupne ---------- */
   var levBuilt = false, lsel = 'emp';
@@ -250,36 +214,9 @@
     });
   }
 
-  /* ---------- 13 príbehy ---------- */
-  var QS = [['from', 'Odkiaľ prichádzam'], ['gave', 'Čo mi štúdium dalo'], ['now', 'Na čom pracujem teraz']];
-  function getP(k) { var P = D.PRESENTERS[k], s = store['p' + k + 'name']; return (s != null && s !== '') ? s : P.name; }
-  function buildStory() {
-    var box = $('#story');
-    ['A', 'B'].forEach(function (k) {
-      var P = D.PRESENTERS[k], col = mk('div', 'pp ' + k.toLowerCase()), head = mk('div', 'head');
-      var ava = mk('label', 'ava'); var img = store['p' + k + 'img'];
-      ava.innerHTML = img ? '<img alt="Fotka prezentujúceho">' : '<span class="t">klikni a vlož fotku</span>';
-      if (img) ava.querySelector('img').src = img;
-      var inp = mk('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.setAttribute('aria-label', 'Vložiť fotku');
-      inp.addEventListener('change', function () { var f = inp.files && inp.files[0]; if (!f) return; var r = new FileReader();
-        r.onload = function () { store['p' + k + 'img'] = r.result; save(); ava.innerHTML = '<img alt="Fotka prezentujúceho" src="' + r.result + '">'; ava.appendChild(inp); }; r.readAsDataURL(f); });
-      ava.appendChild(inp);
-      var who = mk('div');
-      var nm = mk('div', 'nm ed'); nm.contentEditable = 'true'; nm.dataset.ph = 'Meno a priezvisko'; nm.dataset.k = 'p' + k + 'name'; nm.textContent = getP(k);
-      var rl = mk('div', 'rl ed'); rl.contentEditable = 'true'; rl.dataset.ph = 'Funkcia'; rl.dataset.k = 'p' + k + 'role'; rl.textContent = store['p' + k + 'role'] != null ? store['p' + k + 'role'] : P.role;
-      who.appendChild(nm); who.appendChild(rl); head.appendChild(ava); head.appendChild(who); col.appendChild(head);
-      QS.forEach(function (q) {
-        var d = mk('div', 'q'); d.appendChild(mk('h4', '', q[1]));
-        var e = mk('div', 'ed'); e.contentEditable = 'true'; e.dataset.ph = '[doplniť pred prezentáciou]'; e.dataset.k = 'p' + k + q[0]; e.textContent = store['p' + k + q[0]] || ''; d.appendChild(e); col.appendChild(d);
-      });
-      box.appendChild(col);
-    });
-    box.addEventListener('input', function (ev) { var k = ev.target.dataset && ev.target.dataset.k; if (!k) return; store[k] = ev.target.textContent; save(); renderIntroPres(); });
-    box.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); ev.target.blur(); } });
-    renderIntroPres();
-  }
+  /* ---------- úvod: mená prezentujúcich ---------- */
   function renderIntroPres() {
-    $('#introPres').innerHTML = ['A', 'B'].map(function (k) { var P = D.PRESENTERS[k], n = getP(k); return esc(n || ('Doktorand ' + k)) + '<span>' + esc(P.dept) + '</span>'; }).join('<div style="height:10px"></div>');
+    $('#introPres').innerHTML = ['A', 'B'].map(function (k) { var P = D.PRESENTERS[k]; return esc(P.name || ('Doktorand ' + k)) + '<span>' + esc(P.dept) + '</span>'; }).join('<div style="height:10px"></div>');
   }
 
   /* ---------- 14 kvíz ---------- */
@@ -365,8 +302,8 @@
     openOvl('Prehľad slajdov', g);
   }
   var SRCMAP = { 's-intro': ['loga', 'manual'], 's-uniza': ['profil', 'fakulty', 'manual'], 's-campus': ['mapa18', 'mapa25', 'sprievodca', 'ubyt'], 's-why': ['bc'], 's-dept': ['katedry', 'fpedas'],
-    's-prog': ['letakBc', 'bc', 'programy', 'zoznam'], 's-find': ['bc', 'letakBc'], 's-lev': ['letakBc', 'letakIng', 'letakPhd', 'sprievodca'], 's-prax': ['bc', 'sprievodca', 'fpedas'],
-    's-jobs': ['bc'], 's-adm': ['letakBc', 'prij', 'prihlaska'], 's-life': ['letakBc', 'sprievodca', 'ubyt', 'preco'], 's-story': [], 's-quiz': ['profil', 'bc', 'letakBc'], 's-end': ['prij', 'prihlaska'] };
+    's-prog': ['letakBc', 'bc', 'programy', 'zoznam'], 's-lev': ['letakBc', 'letakIng', 'letakPhd', 'sprievodca'], 's-prax': ['stip', 'hmi', 'sprievodca', 'fpedas'],
+    's-stip': ['stip'], 's-jobs': ['bc'], 's-adm': ['letakBc', 'prij', 'prihlaska'], 's-life': ['letakBc', 'sprievodca', 'ubyt', 'preco'], 's-quiz': ['profil', 'bc', 'letakBc'], 's-end': ['prij', 'prihlaska'] };
   function toggleSrc() {
     if (ovl && ovl.getAttribute('aria-label') === 'Zdroje') return closeOvl();
     var wrap = mk('div', 'srcl'); var order = [cur].concat(slides.map(function (_, i) { return i; }).filter(function (i) { return i !== cur; }));
@@ -378,11 +315,11 @@
   }
   function toggleHelp() {
     if (ovl && ovl.getAttribute('aria-label') === 'Ovládanie') return closeOvl();
-    var dl = mk('dl'); dl.className = 'help'; var rows = [['← →  /  PageUp PageDown', 'predchádzajúci a ďalší slajd'], ['Medzerník', 'ďalší slajd (Shift + medzerník: späť)'], ['Home  /  End', 'prvý a posledný slajd'], ['F', 'celá obrazovka (Esc ju ukončí)'], ['G', 'prehľad slajdov'], ['N', 'poznámky pre prezentujúceho'], ['P', 'okno prezentujúceho (poznámky, časovač)'], ['S', 'zdroje'], ['1–6 / 1–4', 'výber záujmov a odpovedí v kvíze'], ['↑ ↓  /  T', 'priemer a typ školy na slajde 11'], ['E', 'zvýrazniť editovateľné polia (slajd 13)'], ['?', 'toto okno']];
+    var dl = mk('dl'); dl.className = 'help'; var rows = [['← →  /  PageUp PageDown', 'predchádzajúci a ďalší slajd'], ['Medzerník', 'ďalší slajd (Shift + medzerník: späť)'], ['Home  /  End', 'prvý a posledný slajd'], ['F', 'celá obrazovka (Esc ju ukončí)'], ['G', 'prehľad slajdov'], ['N', 'poznámky pre prezentujúceho'], ['P', 'okno prezentujúceho (poznámky, časovač)'], ['S', 'zdroje'], ['1–4', 'odpovede v kvíze'], ['↑ ↓  /  T', 'priemer a typ školy na slajde Ako sa dostať'], ['?', 'toto okno']];
     rows.forEach(function (r) { dl.appendChild(mk('dt', '', esc(r[0]))); dl.appendChild(mk('dd', '', esc(r[1]))); });
     openOvl('Ovládanie', dl);
   }
-  $('#bGrid').addEventListener('click', toggleGrid); $('#bSrc').addEventListener('click', toggleSrc); $('#bHelp').addEventListener('click', toggleHelp);
+  $('#bGrid').addEventListener('click', toggleGrid); $('#bHelp').addEventListener('click', toggleHelp);
 
   /* ---------- poznámky ---------- */
   function renderNotes() {
@@ -431,8 +368,6 @@
     else if (k === 'p' || k === 'P') openPresenter();
     else if (k === 's' || k === 'S') toggleSrc();
     else if (k === '?' || k === 'h' || k === 'H') toggleHelp();
-    else if ((k === 'e' || k === 'E') && id === 's-story') { $$('#story .ed').forEach(function (x) { x.classList.add('flash'); }); var f = $('#story .ed'); if (f) f.focus(); }
-    else if (id === 's-find' && /^[1-6]$/.test(k)) togglePick(D.INTERESTS[+k - 1].id);
     else if (id === 's-quiz' && /^[1-4]$/.test(k)) { if (!qz.answered && D.QUIZ[qz.i] && +k <= D.QUIZ[qz.i].o.length) answer(+k - 1); }
     else if (id === 's-quiz' && k === 'Enter') { var nb = $('#qnext'); if (nb && !qz.done) nb.click(); }
     else if (id === 's-adm' && k === 'ArrowUp') { e.preventDefault(); stepAvg(-1); }
@@ -441,7 +376,7 @@
   });
 
   /* ---------- štart ---------- */
-  buildJourney(); buildDepts(); buildPrograms(); buildFind(); buildPrax(); buildJobs(); buildAdm(); buildLife(); buildStory(); renderQuiz();
+  buildJourney(); buildDepts(); buildPrograms(); buildPrax(); buildJobs(); buildAdm(); buildLife(); renderIntroPres(); renderQuiz();
   window.CampusMap.init($('#s-campus'));
   buildLev();
   slides.forEach(function (s) { s.setAttribute('inert', ''); });
