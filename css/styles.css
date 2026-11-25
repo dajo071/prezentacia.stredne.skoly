@@ -190,15 +190,15 @@ button.tile:active{transform:scale(.985)}
 .tab:hover{background:rgba(0,45,114,.08)}
 .tab[aria-selected=true]{background:var(--navy);color:#fff}
 .plist{display:flex;flex-direction:column;gap:8px}
-/* riadok fakulty: farba fakulty ako prechod za skratkou (namiesto štvorčeka) */
-.prow{display:grid;grid-template-columns:112px 1fr;gap:14px;align-items:center;padding:7px 20px;border-radius:0;border:2px solid var(--line);background:linear-gradient(90deg,color-mix(in srgb,var(--c) 38%,#fff) 0,color-mix(in srgb,var(--c) 14%,#fff) 150px,#fff 46%);font-size:25px;transition:border-color .2s,background .2s}
+/* riadok fakulty: jemný prechod v odtieňoch konkrétnej fakulty */
+.prow{display:grid;grid-template-columns:112px 1fr;gap:14px;align-items:center;padding:7px 20px;border-radius:0;border:2px solid var(--line);background:linear-gradient(90deg,color-mix(in srgb,var(--c) 24%,#fff) 0,color-mix(in srgb,var(--c) 8%,#fff) 150px,#fff 46%);font-size:25px;transition:border-color .2s,background .2s}
 .prow i{display:none}
 .prow:hover{border-color:var(--navy)}
 .prow .a{font-weight:800;color:var(--navy)}
 .prow .n{color:var(--mute);font-size:20px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-/* vybraný: plná farba fakulty prechádza do navy */
-.prow[aria-pressed=true]{background:linear-gradient(90deg,var(--c) 0,var(--c) 112px,var(--navy) 250px);border-color:var(--navy)}
-.prow[aria-pressed=true] .a{color:var(--k,#fff)}.prow[aria-pressed=true] .n{color:#DCE4F3}
+/* vybraný: jemný farebný nádych fakulty, text zostáva dobre čitateľný */
+.prow[aria-pressed=true]{background:linear-gradient(90deg,color-mix(in srgb,var(--c) 24%,#fff) 0,color-mix(in srgb,var(--c) 8%,#fff) 112px,#fff 70%);border-color:color-mix(in srgb,var(--c) 45%,var(--line))}
+.prow[aria-pressed=true] .a{color:var(--navy)}.prow[aria-pressed=true] .n{color:var(--mute)}
 .detail{border:2px solid var(--line);border-radius:var(--r);background:var(--surface);padding:24px 32px;flex:1;display:flex;flex-direction:column;gap:12px;min-height:0;position:relative;overflow:hidden}
 .detail h3{font-size:32px;line-height:1.12}
 .detail p{font-size:24px;line-height:1.34}
