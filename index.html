@@ -21,6 +21,14 @@
   <symbol id="i-src" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></symbol>
   <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.4"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.4"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.4"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.4"/></symbol>
   <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2-2.4 3.6M12 17.2v.1"/></symbol>
+  <symbol id="i-bus" viewBox="0 0 24 24"><path d="M5 4h14v12H5zM5 10h14M8 19v-3M16 19v-3M8 13h.01M16 13h.01"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24"><path d="M7 3h10v12H7zM7 9h10M10 12h.01M14 12h.01M8 15l-3 6M16 15l3 6M6 19h12"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 12l-8-3V4.5a1.5 1.5 0 0 0-3 0V9l-7 3v2l7-1.5V18l-2.5 2v1.5L12 20l4.5 1.5V20L14 18v-5.5l7 1.5z"/></symbol>
+  <symbol id="i-ship" viewBox="0 0 24 24"><path d="M3 15h18l-3 5H6zM6 15V9h12v6M12 9V3M12 3l5 3h-5M2 22c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 4-1"/></symbol>
+  <symbol id="i-post" viewBox="0 0 24 24"><path d="M2 7h12v11H2zM2 7l6 5 6-5M17 8a4.5 4.5 0 0 1 0 7M19.6 5.5a8 8 0 0 1 0 12"/></symbol>
+  <symbol id="i-econ" viewBox="0 0 24 24"><path d="M4 20V10M10 20V6M16 20v-8M3 20h18M14 4h6v6M20 4l-7 7"/></symbol>
+  <symbol id="i-quant" viewBox="0 0 24 24"><path d="M17 4H6l6 8-6 8h11"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><path d="M3 3h18v18H3zM12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8M17 6.5h.01"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
   <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
   <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
@@ -109,7 +117,7 @@
 <!-- 06 PROGRAMY -->
 <section class="slide s-prog" id="s-prog" data-title="Čo môžeš študovať" aria-label="Bakalárske študijné programy">
   <div>
-    <h2 data-in style="--i:0">Deväť programov, štyri svety</h2>
+    <h2 data-in style="--i:0">Na výber až deväť programov</h2>
     <p class="lead" style="max-width:none;font-size:30px;--i:1" data-in>Bakalárske štúdium 2027/2028, denne, 3 roky. Klikni na program.</p>
     <div class="cats" id="cats" data-in style="--i:2"></div>
   </div>
@@ -213,6 +221,10 @@
       <div><span class="k">Telefón</span><b>+421 41 513 30 53</b></div>
       <div><span class="k">Adresa</span><b>Univerzitná 8215/1, Žilina</b></div>
     </div>
+    <div class="social" data-in style="--i:2">
+      <div class="k">Sleduj fakultu: vždy najnovšie info a akcie</div>
+      <a class="soc" href="https://www.instagram.com/fpedas_uniza/" target="_blank" rel="noopener"><span class="soc-ic"><svg class="ic"><use href="#i-ig"/></svg></span><span class="soc-tx"><b>Instagram</b><span>@fpedas_uniza</span></span><img class="soc-qr" src="assets/qr/instagram.svg" alt="QR kód: Instagram FPEDAS"></a>
+    </div>
     <p class="endmap" data-in style="--i:2">Interaktívna mapa areálu: uvedená na oficiálnej mape UNIZA ako campus.uniza.sk</p>
   </div>
   <div class="qrs" data-in style="--i:2">
@@ -247,5 +259,6 @@
 <script src="js/campus-data.js"></script>
 <script src="js/map.js"></script>
 <script src="js/app.js"></script>
+<script src="js/typo.js"></script>
 </body>
 </html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dizajn systém UNIZA · Katedra spojov</title>
+<style>
+@font-face{font-family:"Public Sans";src:url("assets/fonts/PublicSans-var.woff2") format("woff2");font-weight:100 900;font-display:swap}
+:root{--navy:#002D72;--navy-deep:#001F52;--blue:#0032A0;--graphite:#302E2C;--ink:#1D2433;--mute:#566277;--paper:#F3F5F9;--surface:#fff;--line:#D5DBE7;--line-2:#B7C1D3;--signal:#FF6A14}
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0}
+body{font-family:"Public Sans",system-ui,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.45;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:64px 24px 96px}
+header{border-bottom:2px solid var(--navy);padding-bottom:32px;margin-bottom:48px}
+.kick{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+h1{font-size:clamp(40px,6vw,72px);line-height:1.02;letter-spacing:-.03em;color:var(--navy);font-weight:800;margin:12px 0 16px}
+h2{font-size:28px;letter-spacing:-.01em;color:var(--navy);margin-bottom:6px}
+section{padding:40px 0;border-top:1px solid var(--line)}
+section>p.d{color:var(--mute);max-width:70ch;margin-bottom:24px}
+.lead{font-size:20px;max-width:62ch;color:var(--ink)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.sw{background:var(--surface);border:2px solid var(--line)}
+.sw i{display:block;height:96px}
+.sw div{padding:12px 14px;font-size:14px}
+.sw b{display:block;font-size:16px;color:var(--navy)}
+.sw code{color:var(--mute);font-size:13px}
+.fac{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));border:2px solid var(--line);background:var(--surface)}
+.fac div{display:flex;gap:12px;align-items:center;padding:14px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-weight:700;color:var(--navy)}
+.fac i{width:14px;height:14px;flex:none}
+.fac small{display:block;font-weight:500;color:var(--mute);font-size:12px}
+.type>div{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+.type code{font-size:13px;color:var(--mute)}
+.do{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.do{grid-template-columns:1fr}.type>div{grid-template-columns:1fr}}
+.box{background:var(--surface);border:2px solid var(--line);padding:20px 22px}
+.box h3{font-size:15px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.yes h3{color:#007A36}.no h3{color:#A6192E}
+.box li{margin:6px 0 6px 18px}
+.demo{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.btn{display:inline-flex;align-items:stretch;font-weight:700;font-size:17px;color:var(--navy);background:#E4E9F1}
+.btn span{padding:14px 22px}.btn i{font-style:normal;display:flex;align-items:center;padding:0 16px;background:var(--navy);color:#fff}
+.btn.p{background:var(--navy);color:#fff}.btn.p i{background:var(--signal);color:var(--navy)}
+.dk{background:var(--navy);padding:16px;display:inline-flex}.dk .btn{background:#fff}.dk .btn i{background:var(--signal);color:var(--navy)}
+.chip{display:inline-block;padding:8px 14px;background:#E4E9F1;color:var(--navy);font-weight:700;font-size:15px}.chip.m{background:var(--signal)}
+.seg{display:inline-flex;background:#E4E9F1;padding:4px}.seg span{padding:10px 22px;font-weight:700;color:var(--navy)}.seg .on{background:var(--navy);color:#fff}
+.fc{display:grid;grid-template-columns:140px 1fr;margin-bottom:6px;max-width:640px}.fc b{display:flex;align-items:flex-end;padding:10px 14px;font-size:22px;color:#fff;min-height:72px}.fc div{background:#fff;padding:12px 18px;color:var(--navy);font-weight:700}.fc small{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.label{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--signal)}
+.list{background:var(--surface);border:2px solid var(--line);min-width:300px;flex:1}
+.list div{padding:12px 16px;border-top:1px solid var(--line);color:var(--navy);font-weight:600;display:flex;justify-content:space-between}
+.list div:first-child{border-top:0}
+.list .on{background:var(--navy);color:#fff}
+.stat{background:var(--surface);border:2px solid var(--line);padding:20px 22px;min-width:220px}
+.stat b{display:block;font-size:56px;line-height:1;color:var(--navy);letter-spacing:-.03em;font-weight:800}
+.stat span{color:var(--mute);font-size:15px}
+.voice td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.voice th{text-align:left;padding:10px 12px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);border-bottom:2px solid var(--navy)}
+table{border-collapse:collapse;width:100%;background:var(--surface)}
+footer{margin-top:48px;font-size:14px;color:var(--mute)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kick">Prezentácia pre stredné školy · verzia 1 · 25. 11. 2026</div>
+  <h1>Dizajn systém UNIZA · Katedra spojov</h1>
+  <p class="lead">Vychádza z oficiálneho manuálu vizuálneho štýlu UNIZA. Katedra spojov patrí pod FPEDAS, preto jej farbou je modrá FPEDAS. Tón a štruktúru obsahu preberá z webu <b>studuj-ks.uniza.sk</b>: priame „Študuj“, konkrétne čísla, „Naučíš sa“ a „Kde sa uplatníš“. Tokeny sú v <code>css/styles.css</code> v bloku <code>:root</code>.</p>
+</header>
+
+<section>
+  <h2>Princípy</h2>
+  <p class="d">Päť pravidiel, ktoré platia na každej snímke.</p>
+  <div class="do">
+    <div class="box yes"><h3>Áno</h3><ul>
+      <li>Pravé uhly na všetkých plochách, tlačidlách a štítkoch</li>
+      <li>Hierarchia písmom a priestorom, delenie vlasovou linkou 1 px</li>
+      <li>Jeden oranžový akcent na obrazovku</li>
+      <li>Farba fakulty iba ako identifikátor: štvorček, pruh, budova na mape</li>
+      <li>Kruh iba pre portrét alebo bod na časovej osi</li>
+    </ul></div>
+    <div class="box no"><h3>Nie</h3><ul>
+      <li>Oblé obdĺžniky a „pilulky“ (štítky, tlačidlá, karty)</li>
+      <li>Tiene, žiary, gradienty, sklenené efekty</li>
+      <li>Farebné pruhy na okraji kariet</li>
+      <li>Rámček okolo každého prvku, karty v kartách</li>
+      <li>Výplňový text, generické ikony nástrojov, emoji v nadpisoch</li>
+    </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Farby</h2>
+  <p class="d">Základ UNIZA a FPEDAS podľa manuálu (kap. 4.1, s. 45). Plochy sú biele a svetlosivé, farba sa šetrí.</p>
+  <div class="grid">
+    <div class="sw"><i style="background:#002D72"></i><div><b>UNIZA modrá</b><code>--navy · #002D72 · P 288 C</code></div></div>
+    <div class="sw"><i style="background:#0032A0"></i><div><b>FPEDAS / Katedra spojov</b><code>--blue · #0032A0 · P 286 C</code></div></div>
+    <div class="sw"><i style="background:#001F52"></i><div><b>Tmavé pozadie</b><code>--navy-deep · #001F52</code></div></div>
+    <div class="sw"><i style="background:#FF6A14"></i><div><b>Akcent</b><code>--signal · #FF6A14 · P 1585 C</code></div></div>
+    <div class="sw"><i style="background:#302E2C"></i><div><b>Grafit UNIZA</b><code>--graphite · #302E2C</code></div></div>
+    <div class="sw"><i style="background:#1D2433"></i><div><b>Text</b><code>--ink · #1D2433</code></div></div>
+    <div class="sw"><i style="background:#566277"></i><div><b>Sekundárny text</b><code>--mute · #566277</code></div></div>
+    <div class="sw"><i style="background:#F3F5F9;border-bottom:1px solid #D5DBE7"></i><div><b>Papier</b><code>--paper · #F3F5F9</code></div></div>
+    <div class="sw"><i style="background:#D5DBE7"></i><div><b>Linka</b><code>--line · #D5DBE7</code></div></div>
+  </div>
+  <h2 style="margin-top:32px;font-size:20px">Farby fakúlt</h2>
+  <p class="d">Len ako identifikátor. Svetlé farby (SvF, FRI) nikdy ako farba textu.</p>
+  <div class="fac">
+    <div><i style="background:#0032A0"></i>FPEDAS<small>#0032A0</small></div>
+    <div><i style="background:#A6192E"></i>SjF<small>#A6192E</small></div>
+    <div><i style="background:#FF6A14"></i>FEIT<small>#FF6A14</small></div>
+    <div><i style="background:#6CACE4"></i>SvF<small>#6CACE4</small></div>
+    <div><i style="background:#FFB81C"></i>FRI<small>#FFB81C</small></div>
+    <div><i style="background:#009A44"></i>FBI<small>#009A44</small></div>
+  </div>
+</section>
+
+<section class="type">
+  <h2>Písmo</h2>
+  <p class="d">Public Sans (písmo z manuálu UNIZA), jedna rodina, váhy 500 až 800. Nadpisy s mierne stiahnutým prestrkaním. Veľkosti platia na plátne 1920 × 1080.</p>
+  <div><code>display · 140</code><span style="font-size:56px;font-weight:800;letter-spacing:-.03em;color:var(--navy);line-height:1">Študuj na UNIZA</span></div>
+  <div><code>h1 · 92</code><span style="font-size:40px;font-weight:800;letter-spacing:-.03em;color:var(--navy)">Šesť fakúlt, jeden areál</span></div>
+  <div><code>h3 · 42</code><span style="font-size:26px;font-weight:700;color:var(--navy)">Elektronický obchod a manažment</span></div>
+  <div><code>body · 26</code><span style="font-size:18px">Naučíš sa spájať IT, marketing, manažment a ekonomiku.</span></div>
+  <div><code>label · 17</code><span class="kick">Kde sa uplatníš</span></div>
+</section>
+
+<section>
+  <h2>Tvar, priestor, linky</h2>
+  <p class="d">Polomer zaoblenia je 0. Priestor na mriežke 8 px (8, 16, 24, 32, 48, 64, 96). Rámec 2 px <code>--line</code>, delenie 1 px. Tieň iba vo vnútri 3D mapy, kde znázorňuje výšku budov.</p>
+</section>
+
+<section>
+  <h2>Prvky · smer B „Blok“</h2>
+  <p class="d">Plné farebné plochy a hrubé písmo. Šípka tlačidla je v samostatnom bloku. Zdroj: Figma „UNIZA Katedra spojov“, stránka Komponenty.</p>
+  <div class="demo">
+    <span class="btn p"><span>Zisti viac</span><i>→</i></span>
+    <span class="btn"><span>Zisti viac</span><i>→</i></span>
+    <span class="dk"><span class="btn"><span>Zisti viac</span><i>→</i></span></span>
+  </div>
+  <div class="demo" style="margin-top:20px">
+    <span class="chip">Telekomunikácie</span><span class="chip m">Telekomunikácie</span>
+    <span class="seg"><span class="on">Areál</span><span>Fakulty</span><span>Štúdium</span></span>
+  </div>
+  <div style="margin-top:20px">
+    <div class="fc"><b style="background:#0032A0">FPEDAS</b><div>Fakulta prevádzky a ekonomiky dopravy a spojov<small>Katedra spojov</small></div></div>
+    <div class="fc"><b style="background:#6CACE4;color:#002D72">SvF</b><div>Stavebná fakulta<small>Stavby</small></div></div>
+  </div>
+  <div class="demo" style="margin-top:24px">
+    <div class="list"><div class="on">Elektronický obchod a manažment <span>→</span></div><div>Distribučné technológie a služby</div><div>Zasielateľstvo a logistika</div></div>
+    <div class="stat"><span class="label">tu pôsobíme</span><b>750 €</b><span>štipendium za semester</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Hlas</h2>
+  <p class="d">Rovnako ako na webe Katedry spojov: tykáme, hovoríme o tom, čo sa žiak naučí a kde sa uplatní, a vždy ponúkneme číslo.</p>
+  <table class="voice">
+    <tr><th>Namiesto</th><th>Píšeme</th></tr>
+    <tr><td>Študijný program poskytuje vzdelanie v oblasti…</td><td>Naučíš sa spájať IT, marketing a ekonomiku.</td></tr>
+    <tr><td>Absolventi nachádzajú uplatnenie…</td><td>Kde sa uplatníš: e-shop, logistika, telekomunikácie.</td></tr>
+    <tr><td>Bližšie informácie</td><td>Zisti viac · E-prihláška</td></tr>
+  </table>
+</section>
+
+<footer>Zdroje: Manuál jednotného vizuálneho štýlu UNIZA (kap. 4.1 a 4.2); web studuj-ks.uniza.sk (štruktúra a texty). Presné farby webu Katedry spojov sa nepodarilo načítať, preto sa paleta opiera o manuál UNIZA a farbu FPEDAS.</footer>
+</div>
+</body>
+</html>

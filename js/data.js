@@ -8,7 +8,7 @@ window.DECK = (function () {
 
   /* ---------- Prezentujúci (doplniť pred prezentáciou; možno prepísať aj priamo v slajde 13 – klávesa E) ---------- */
   var PRESENTERS = {
-    A: { name: 'Ing. Dávid Horník', dept: 'Katedra ekonomiky', role: 'Doktorand, absolvent Katedry ekonomiky' },
+    A: { name: 'Ing. Dávid Horník', dept: 'Katedra spojov', role: 'Doktorand, absolvent Katedry ekonomiky' },
     B: { name: 'Ing. Michal Buchta', dept: 'Katedra spojov', role: 'Doktorand Katedry spojov' }
   };
 
@@ -60,14 +60,16 @@ window.DECK = (function () {
   };
 
   /* ---------- Katedry FPEDAS (oficiálne popisy skrátené) ---------- */
+  /* progs: programy, ktoré katedra profiluje. Spoje: web studuj-ks.uniza.sk (EOM, DTS); Ekonomika: ke.uniza.sk (FM) a EMP;
+     Cestná a mestská doprava: CD a ZaL (garant ZaL Bc. prof. Gnap, opis SP 2022); Letecká: pilot v spolupráci s LVVC. */
   var DEPTS = [
-    { id: 'cmd', g: 'doprava', n: 'Katedra cestnej a mestskej dopravy', t: 'Technológie cestnej a mestskej dopravy, dopravné inžinierstvo, hromadná osobná doprava, cestné vozidlá a dopravné plánovanie.' },
-    { id: 'zel', g: 'doprava', n: 'Katedra železničnej dopravy', t: 'Železničné dopravné a prepravné procesy, ekonomika a manažment železničnej dopravy, intermodálna preprava a logistika.' },
-    { id: 'let', g: 'doprava', n: 'Katedra leteckej dopravy', t: 'Centrum vzdelávania, výskumu a výcviku v civilnom letectve.' },
-    { id: 'vod', g: 'doprava', n: 'Katedra vodnej dopravy', t: 'Centrum vzdelávania a výskumu v oblasti vnútrozemskej riečnej a námornej plavby.' },
-    { id: 'spo', g: 'doprava', n: 'Katedra spojov', mine: 'B', t: 'Profilová katedra pre odborníkov v oblasti informačno-komunikačných technológií, poštových, logistických a zasielateľských služieb a v telekomunikačných a sieťových podnikoch.' },
-    { id: 'eko', g: 'ekonomika', n: 'Katedra ekonomiky', mine: 'A', t: 'Základné aj špecializované ekonomické, právne a sociálne predmety na všetkých odboroch FPEDAS a vybraných odboroch ďalších fakúlt.' },
-    { id: 'kvm', g: 'ekonomika', n: 'Katedra kvantitatívnych metód a hospodárskej informatiky', t: 'Matematické a informatické predmety vo všetkých študijných programoch FPEDAS.' }
+    { id: 'cmd', ic: 'bus', s: 'Cestná a mestská doprava', progs: ['cesta', 'zal'], g: 'doprava', n: 'Katedra cestnej a mestskej dopravy', t: 'Technológie cestnej a mestskej dopravy, dopravné inžinierstvo, hromadná osobná doprava, cestné vozidlá a dopravné plánovanie.' },
+    { id: 'zel', ic: 'train', s: 'Železničná doprava', progs: ['zel'], g: 'doprava', n: 'Katedra železničnej dopravy', t: 'Železničné dopravné a prepravné procesy, ekonomika a manažment železničnej dopravy, intermodálna preprava a logistika.' },
+    { id: 'let', ic: 'plane', s: 'Letecká doprava', progs: ['let'], g: 'doprava', n: 'Katedra leteckej dopravy', t: 'Centrum vzdelávania, výskumu a výcviku v civilnom letectve.' },
+    { id: 'vod', ic: 'ship', s: 'Vodná doprava', progs: ['vod'], g: 'doprava', n: 'Katedra vodnej dopravy', t: 'Centrum vzdelávania a výskumu v oblasti vnútrozemskej riečnej a námornej plavby.' },
+    { id: 'spo', ic: 'post', s: 'Spoje', progs: ['eob', 'dts'], g: 'doprava', n: 'Katedra spojov', mine: 'B', t: 'Profilová katedra pre odborníkov v oblasti informačno-komunikačných technológií, poštových, logistických a zasielateľských služieb a v telekomunikačných a sieťových podnikoch.' },
+    { id: 'eko', ic: 'econ', s: 'Ekonomika', progs: ['emp', 'fin'], g: 'ekonomika', n: 'Katedra ekonomiky', t: 'Základné aj špecializované ekonomické, právne a sociálne predmety na všetkých odboroch FPEDAS a vybraných odboroch ďalších fakúlt.' },
+    { id: 'kvm', ic: 'quant', s: 'Kvantitatívne metódy a informatika', progs: [], g: 'ekonomika', n: 'Katedra kvantitatívnych metód a hospodárskej informatiky', t: 'Matematické a informatické predmety vo všetkých študijných programoch FPEDAS.' }
   ];
 
   /* ---------- Bakalárske programy 2027/2028 ---------- */
@@ -137,20 +139,24 @@ window.DECK = (function () {
   ];
 
   /* ---------- Kde sa uplatniť (slajd 10); pozície podľa oficiálnych profilov absolventov ---------- */
-  var ROLES = [
+  var ROLES = [ /* podľa infoletáku FPEDAS Bc. 2027/2028 a stránky Bakalárske štúdium (profil absolventa) */
     { cat: 'biz', r: 'Finančný manažér projektov a grantov EÚ', p: 'fin' },
-    { cat: 'biz', r: 'Manažér v malom a strednom podniku', p: 'fin' },
-    { cat: 'biz', r: 'Manažér na nižšom a strednom stupni riadenia', p: 'emp' },
+    { cat: 'biz', r: 'Finančný manažér v štátnej správe či samospráve', p: 'fin' },
+    { cat: 'biz', r: 'Manažér firmy doma aj v zahraničí', p: 'fin' },
+    { cat: 'biz', r: 'Vedúci tímu vo firme či na úrade', p: 'emp' },
     { cat: 'eco', r: 'Manažér predaja', p: 'eob' },
-    { cat: 'eco', r: 'Obchodný zástupca', p: 'eob' },
-    { cat: 'eco', r: 'Konzultant a supervízor', p: 'eob' },
-    { cat: 'log', r: 'Zasielateľ', p: 'zal' },
-    { cat: 'log', r: 'Dopravný manažér', p: 'zal' },
-    { cat: 'log', r: 'Pracovník poštových a distribučných sietí', p: 'dts' },
-    { cat: 'mob', r: 'Výpravca (po kurze so ŽSR)', p: 'zel' },
-    { cat: 'mob', r: 'Plánovač cestnej dopravy', p: 'cesta' },
-    { cat: 'mob', r: 'Lodný kadet, neskôr kapitán', p: 'vod' },
-    { cat: 'mob', r: 'Profesionálny pilot', p: 'let' }
+    { cat: 'eco', r: 'Konzultant pre obchod a služby', p: 'eob' },
+    { cat: 'eco', r: 'Supervízor alebo obchodný zástupca', p: 'eob' },
+    { cat: 'eco', r: 'Majiteľ vlastnej firmy v obchode a službách', p: 'eob' },
+    { cat: 'log', r: 'Disponent v logistickej firme', p: 'zal' },
+    { cat: 'log', r: 'Zasielateľ v nadnárodnej logistickej spoločnosti', p: 'zal' },
+    { cat: 'log', r: 'Riadenie prevádzky v logistickom podniku', p: 'dts' },
+    { cat: 'log', r: 'Regulátor poštových služieb a sietí', p: 'dts' },
+    { cat: 'mob', r: 'Profesionálny pilot (výcvik k licencii ATPL)', p: 'let' },
+    { cat: 'mob', r: 'Lodný kadet, neskôr kapitán lode', p: 'vod' },
+    { cat: 'mob', r: 'Expert na vozidlá pre poisťovne a lízing', p: 'cesta' },
+    { cat: 'mob', r: 'Výpravca vlakov (po kurze so ŽSR)', p: 'zel' },
+    { cat: 'mob', r: 'Plánovač dopravy v regióne', p: 'cesta' }
   ];
 
   /* ---------- Praktické príklady (slajd 9) ---------- */

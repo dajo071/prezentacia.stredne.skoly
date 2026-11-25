@@ -28,12 +28,12 @@
     var box = $('#facList'), F = D.FACULTIES;
     ['fpedas', 'sjf', 'feit', 'svf', 'fri', 'fbi'].forEach(function (k, i) {
       var f = F[k], r = mk('div', 'fac' + (f.hero ? ' hero' : ''));
-      r.style.setProperty('--c', f.color); r.setAttribute('data-in', ''); r.style.setProperty('--i', i + 1);
-      r.innerHTML = '<i></i><span class="ab">' + esc(f.abbr) + '</span><span class="tx"><b>' + esc(f.name) + '</b>' + esc(f.focus) + '</span>';
+      r.style.setProperty('--c', f.color); r.style.setProperty('--k', f.ink); r.setAttribute('data-in', ''); r.style.setProperty('--i', i + 1);
+      r.innerHTML = '<span class="ab">' + esc(f.abbr) + '</span><span class="tx">' + (f.hero ? '<span class="tag">naša fakulta · Katedra spojov</span>' : '') + '<b>' + esc(f.name) + '</b>' + esc(f.focus) + '</span>';
       box.appendChild(r);
     });
-    var u = mk('div', 'fac aside'); u.setAttribute('data-in', ''); u.style.setProperty('--i', 8); u.style.setProperty('--c', '#9AA7C0');
-    u.innerHTML = '<i></i><span class="ab" style="font-size:30px">ÚMKD</span><span class="tx"><b style="font-size:24px;margin:0">Ústav mediamatiky a kultúrneho dedičstva</b></span>';
+    var u = mk('div', 'fac aside'); u.setAttribute('data-in', ''); u.style.setProperty('--i', 8); u.style.setProperty('--c', '#8A96AD');
+    u.innerHTML = '<span class="ab">ÚMKD</span><span class="tx"><b>Ústav mediamatiky a kultúrneho dedičstva</b></span>';
     box.appendChild(u);
   })();
 
@@ -64,16 +64,31 @@
     st.appendChild(ch); w.appendChild(st); d.appendChild(w);
   }
 
-  /* ---------- 05 katedry ---------- */
+  /* ---------- 05 katedry: štvorcové dlaždice s ikonou, detail na celú obrazovku ---------- */
+  var dpanel = null;
+  function closeDept() { if (dpanel) { dpanel.parentNode.removeChild(dpanel); dpanel = null; } }
+  function openDept(d) {
+    closeDept();
+    var sec = $('#s-dept'); dpanel = mk('div', 'dpanel' + (d.mine ? ' mine' : '')); dpanel.setAttribute('role', 'dialog'); dpanel.setAttribute('aria-label', d.n);
+    var progs = (d.progs || []).map(function (pid) { var p = prog(pid);
+      return '<button class="btn main" data-p="' + pid + '">' + esc(p.n) + '</button>'; }).join('');
+    dpanel.innerHTML = '<div class="dp-ic"><svg class="ic"><use href="#i-' + d.ic + '"/></svg></div>' +
+      '<div class="dp-tx"><div class="dp-k">' + (d.g === 'doprava' ? 'Doprava a spoje' : 'Ekonomika') + (d.mine ? ' · <b>tu pôsobíme</b>' : '') + '</div>' +
+      '<h3>' + esc(d.n) + '</h3><p>' + esc(d.t) + '</p>' +
+      (progs ? '<div class="dp-p"><div class="dp-k">Bakalárske programy katedry</div><div class="dp-pb">' + progs + '</div></div>' : '<div class="dp-k" style="margin-top:28px">Učí predmety vo všetkých programoch fakulty</div>') + '</div>';
+    var c = mk('button', 'close', '<svg class="ic"><use href="#i-close"/></svg>'); c.setAttribute('aria-label', 'Zavrieť'); c.addEventListener('click', closeDept); dpanel.appendChild(c);
+    Array.prototype.forEach.call(dpanel.querySelectorAll('[data-p]'), function (b) { b.addEventListener('click', function () { closeDept(); openProgram(b.dataset.p); }); });
+    sec.appendChild(dpanel); c.focus();
+  }
   function buildDepts() {
     var box = $('#dgroups');
-    D.DEPTS.forEach(function (d) {
-      var b = mk('button', 'dept'); b.setAttribute('aria-expanded', 'false');
-      b.innerHTML = '<div class="top"><span>' + esc(d.n) + '</span>' + (d.mine ? '<span class="chip mark">tu pôsobíme</span>' : '') + '</div><div class="more"><div><p>' + esc(d.t) + '</p></div></div>';
-      b.addEventListener('click', function () { var o = b.getAttribute('aria-expanded') === 'true'; $$('.dept').forEach(function (x) { x.setAttribute('aria-expanded', 'false'); }); b.setAttribute('aria-expanded', !o); });
+    D.DEPTS.forEach(function (d, i) {
+      var b = mk('button', 'dtile' + (d.mine ? ' mine' : '')); b.style.setProperty('--i', i);
+      b.innerHTML = '<span class="dt-ic"><svg class="ic"><use href="#i-' + d.ic + '"/></svg></span><span class="dt-n">' + esc(d.s) + '</span>' + (d.mine ? '<span class="dt-m">tu pôsobíme</span>' : '');
+      b.setAttribute('aria-label', d.n);
+      b.addEventListener('click', function () { openDept(d); });
       box.appendChild(b);
     });
-    $$('.dept')[4].setAttribute('aria-expanded', 'true');
   }
 
   /* ---------- 06 programy ---------- */
@@ -97,7 +112,7 @@
     $$('.pchip').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.id === id); });
     var box = $('#pdet'); box.style.setProperty('--c', c);
     var seats = p.en ? p.seats + ' <span style="font-size:30px;color:var(--mute);font-weight:600">+ ' + p.en + ' v angličtine</span>' : String(p.seats);
-    box.innerHTML = '<div class="swap"><h3>' + esc(p.s) + '</h3><div class="meta"><b>' + seats + '</b><span>plánovaných miest v roku 2027/2028</span></div>' +
+    box.innerHTML = '<div class="swap"><div class="kick"><i></i>' + esc(D.CATS[p.cat].n) + '</div><h3>' + esc(p.s) + '</h3><div class="meta"><b>' + seats + '</b><span>plánovaných miest v roku 2027/2028</span></div>' +
       '<h4>Naučíš sa</h4><ul>' + p.learn.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' +
       '<h4>Napríklad</h4><ul>' + p.practice.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' +
       '<h4>Kde sa uplatníš</h4><p>' + esc(p.jobs) + '</p></div>';
@@ -259,7 +274,7 @@
     b.addEventListener('click', function () { go(i); }); segs.appendChild(b);
   });
   var presWin = null;
-  function go(n) {
+  function go(n) { closeDept();
     n = Math.max(0, Math.min(N - 1, n)); if (n === cur) return;
     slides.forEach(function (s, i) {
       s.classList.toggle('is-active', i === n); s.classList.toggle('is-before', i < n);
@@ -350,7 +365,8 @@
   document.addEventListener('keydown', function (e) {
     var t = e.target, tag = t && t.tagName, editing = t && (t.isContentEditable || tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT');
     if (e.key === 'Escape') {
-      if (ovl) { closeOvl(); e.preventDefault(); }
+      if (dpanel) { closeDept(); e.preventDefault(); }
+      else if (ovl) { closeOvl(); e.preventDefault(); }
       else if (editing && t.blur) t.blur();
       else if (document.fullscreenElement) { try { document.exitFullscreen(); } catch (x) { /* nič */ } }
       return;
